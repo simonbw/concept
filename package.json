@@ -1,0 +1,60 @@
+{
+  "name": "concept",
+  "version": "1.0.0",
+  "description": "Clone of the board game Concept",
+  "main": "index.js",
+  "scripts": {
+    "format": "npx prettier --write ./src/**/*.{ts,tsx}",
+    "build": "npm-run-all build:*",
+    "build:client": "node esbuild-client.config.mjs",
+    "build:server": "node esbuild-server.config.mjs",
+    "start": "NODE_ENV=production node --enable-source-maps dist/server/index.js",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "node esbuild-client.config.mjs --dev",
+    "dev:server": "concurrently -r \"node esbuild-server.config.mjs --dev\" \"NODE_ENV=development nodemon --no-deprecation -r ./configure-env.js --enable-source-maps dist/server/index.js\"",
+    "tsc": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonbw/concept.git"
+  },
+  "author": "Simon Baumgardt-Wellander",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonbw/concept/issues"
+  },
+  "homepage": "https://github.com/simonbw/concept#readme",
+  "nodemonConfig": {
+    "enable-source-maps": true,
+    "watch": [
+      "dist/server"
+    ]
+  },
+  "engines": {
+    "npm": ">=9.0.0",
+    "node": ">=18.0.0"
+  },
+  "prettier": {},
+  "dependencies": {
+    "@headlessui/react": "^1.7.18",
+    "@headlessui/tailwindcss": "^0.2.0",
+    "@trpc/client": "^10.45.0",
+    "@trpc/server": "^10.45.0",
+    "@types/express": "^4.17.21",
+    "@types/express-http-proxy": "^1.6.6",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "esbuild": "^0.19.11",
+    "esbuild-serve": "^1.0.1",
+    "esbuild-style-plugin": "^1.6.3",
+    "express": "^4.18.2",
+    "express-http-proxy": "^2.0.0",
+    "postcss": "^8.4.33",
+    "postcss-import": "^16.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "zod": "^3.22.4"
+  }
+}
