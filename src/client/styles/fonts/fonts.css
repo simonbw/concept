@@ -1,0 +1,64 @@
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: normal;
+
+  src: url("/static/fonts/VT323-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Perfect DOS";
+  font-style: normal;
+  font-weight: normal;
+  fallback: monospace;
+
+  src: url("/static/fonts/Perfect-DOS-VGA-437-Win.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Seven Segment";
+  font-style: normal;
+  font-weight: normal;
+
+  src: url("/static/fonts/Seven-Segment.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "DS Digi";
+  font-style: normal;
+  font-weight: normal;
+
+  src: url("/static/fonts/ds-digi.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "TT2020";
+  font-style: normal;
+  font-weight: normal;
+
+  src: url("/static/fonts/TT2020Base-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "TT2020";
+  font-style: italic;
+  font-weight: normal;
+
+  src: url("/static/fonts/TT2020Base-Italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "TT2020";
+  font-style: normal;
+  font-weight: bold;
+
+  src: url("/static/fonts/TT2020StyleB-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "TT2020";
+  font-style: italic;
+  font-weight: bold;
+
+  src: url("/static/fonts/TT2020StyleB-Italic.woff2") format("woff2");
+}

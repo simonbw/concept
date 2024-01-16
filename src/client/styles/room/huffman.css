@@ -1,0 +1,55 @@
+.huffman-node {
+  @apply flex flex-col items-center justify-start relative pt-2 pb-0;
+}
+
+.huffman-node-character {
+  @apply rounded-sm h-4 w-4 text-xs mx-0.5;
+}
+
+.huffman-node-character:not(.huffman-node-leaf) {
+  @apply border flex items-center justify-center;
+}
+
+.huffman-node-leaf {
+  @apply text-inverse text-center;
+}
+
+.huffman-node-children {
+  @apply flex flex-row items-start justify-center pt-2;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+.huffman-node-children .huffman-node::before,
+.huffman-node-children .huffman-node::after {
+  content: "";
+  @apply absolute top-0 right-[50%] border-t w-[50%] h-2;
+}
+
+.huffman-node::after {
+  @apply left-[50%] right-[auto] border-l;
+}
+
+/*We need to remove left-right connectors from elements without 
+any siblings*/
+.huffman-node:only-child::after,
+.huffman-node:only-child::before {
+  display: none;
+}
+
+/*Remove left connector from first child and 
+right connector from last child*/
+.huffman-node:first-child::before,
+.huffman-node:last-child::after {
+  border: 0 none;
+}
+
+/*Adding back the vertical connector to the last nodes*/
+.huffman-node:last-child::before {
+  @apply border-r;
+}
+
+/*Time to add downward connectors from parents*/
+.huffman-node-children::before {
+  content: "";
+  @apply absolute top-6 left-[50%] border-l w-0 h-2;
+}
