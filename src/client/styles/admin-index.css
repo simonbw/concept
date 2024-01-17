@@ -1,9 +1,0 @@
-@import "tailwindcss/base";
-@import "./fonts/fonts.css";
-@import "./base.css";
-@import "./admin/admin-base.css";
-
-@import "tailwindcss/components";
-@import "./admin/admin-components.css";
-
-@import "tailwindcss/utilities";
