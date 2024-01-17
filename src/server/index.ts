@@ -14,7 +14,7 @@ makeApp().then(({ app, wss }) => {
 
   const port = getPort();
   server.listen(port, () => {
-    console.log(`[server] Escape Room serving at http://localhost:${port}`);
+    console.log(`[server] Concept serving at http://localhost:${port}`);
     console.log("[server] NODE_ENV:", process.env.NODE_ENV);
   });
 });

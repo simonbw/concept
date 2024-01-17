@@ -3,6 +3,7 @@ import EventSource from "eventsource";
 import { Router } from "express";
 import https from "https";
 import { z } from "zod";
+import { getEsBuildPort } from "../utils/envUtils";
 import { trpc } from "./trpc";
 
 const router = Router();
@@ -21,7 +22,7 @@ export const esbuildTrpcRouter = trpc.router({
   events: trpc.procedure.subscription(() =>
     observable<ChangeEvent>((observer) => {
       try {
-        const esbuildUrl = "http://0.0.0.0:8000/esbuild";
+        const esbuildUrl = `http://0.0.0.0:${getEsBuildPort()}/esbuild`;
 
         const source = new EventSource(esbuildUrl, {
           rejectUnauthorized: false,
@@ -114,7 +115,7 @@ export const esbuildTrpcRouter = trpc.router({
         console.error("Error while forwarding events", error);
         observer.error("event: connection-error\n" + "data: " + error + "\n\n");
       }
-    }),
+    })
   ),
 });
 

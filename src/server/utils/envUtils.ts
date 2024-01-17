@@ -5,20 +5,16 @@ export function getNodeEnv(): string {
   return process.env.NODE_ENV ?? "";
 }
 
-export function isAutoStart(): boolean {
-  return process.env.AUTO_START_GAME === "true";
-}
-
-export function isLockdownEnabled(): boolean {
-  return process.env.LOCKDOWN_ENABLED === "true";
-}
-
 export function isDev(): boolean {
   return getNodeEnv() === "development";
 }
 
 export function getPort(): number {
   return Number(process.env.PORT ?? "3000");
+}
+
+export function getEsBuildPort(): number {
+  return Number(process.env.ES_BUILD_DEV_PORT ?? "2346");
 }
 
 export function getStaticsFolder(): string {

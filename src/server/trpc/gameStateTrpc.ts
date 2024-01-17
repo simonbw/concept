@@ -33,7 +33,7 @@ export const gameStateTrpcRouter = trpc.router({
       return () => {
         gameStateDiffChannel.unsubscribe(listenerId);
       };
-    }),
+    })
   ),
 
   // Mutations
@@ -52,7 +52,7 @@ export const gameStateTrpcRouter = trpc.router({
         const merged = merge.withOptions(
           { allowUndefinedOverrides: false, mergeArrays: false },
           gameState,
-          gameStatePatch,
+          gameStatePatch
         );
         const result = gameStateSchema.safeParse(merged);
         if (result.success) {

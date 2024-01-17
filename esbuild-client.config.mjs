@@ -36,7 +36,7 @@ const context = await esbuild
       }),
     ],
   })
-  .catch(() => {
+  .catch((error) => {
     console.error(`Build error: ${error}`);
     process.exit(1);
   });
@@ -54,8 +54,8 @@ if (isDev) {
         await fsp.cp(from, to, {
           recursive: true,
         });
-      } catch (e) {
-        console.error(e);
+      } catch (error) {
+        console.error(error);
       }
     } else {
       // just a rename
@@ -64,8 +64,11 @@ if (isDev) {
 
   await context.watch();
   const { host, port } = await context
-    .serve({ servedir: "dist/client", port: 8000 })
-    .catch(() => {
+    .serve({
+      servedir: "dist/client",
+      port: process.env.ES_BUILD_DEV_PORT || 3001,
+    })
+    .catch((error) => {
       console.error(`Build error: ${error}`);
       process.exit(1);
     });
