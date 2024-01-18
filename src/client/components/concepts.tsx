@@ -680,7 +680,24 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">{"/"}</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <line
+            x1={10}
+            y1={90}
+            x2={90}
+            y2={10}
+            className="stroke-blue-600 fill-none"
+            strokeWidth={12}
+          />
+          <line
+            x1={10}
+            y1={90}
+            x2={90}
+            y2={10}
+            className="stroke-blue-500 fill-none"
+            strokeWidth={6}
+          />
+        </svg>
       </div>
     ),
   },
@@ -689,7 +706,20 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">⌒</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <path
+            d="M 15 90, Q 10 10 90 15"
+            fill="none"
+            className="stroke-blue-600 fill-none"
+            strokeWidth={12}
+          />
+          <path
+            d="M 15 90, Q 10 10 90 15"
+            fill="none"
+            className="stroke-blue-500 fill-none"
+            strokeWidth={6}
+          />
+        </svg>
       </div>
     ),
   },
@@ -698,7 +728,44 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">+</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <line
+            x1={10}
+            y1={50}
+            x2={90}
+            y2={50}
+            className="stroke-blue-600 fill-none"
+            strokeWidth={12}
+            strokeLinecap="round"
+          />
+          <line
+            x1={50}
+            y1={10}
+            x2={50}
+            y2={90}
+            className="stroke-blue-600 fill-none"
+            strokeWidth={12}
+            strokeLinecap="round"
+          />
+          <line
+            x1={10}
+            y1={50}
+            x2={90}
+            y2={50}
+            className="stroke-blue-500 fill-none"
+            strokeWidth={6}
+            strokeLinecap="round"
+          />
+          <line
+            x1={50}
+            y1={10}
+            x2={50}
+            y2={90}
+            className="stroke-blue-500 fill-none"
+            strokeWidth={6}
+            strokeLinecap="round"
+          />
+        </svg>
       </div>
     ),
   },
@@ -707,7 +774,20 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">📈</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <path
+            d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
+            className="stroke-blue-600 fill-none"
+            strokeLinecap="round"
+            strokeWidth={12}
+          />
+          <path
+            d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
+            className="stroke-blue-500 fill-none"
+            strokeLinecap="round"
+            strokeWidth={6}
+          />
+        </svg>
       </div>
     ),
   },
@@ -734,7 +814,22 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">⭕</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <circle
+            cx={50}
+            cy={50}
+            r={35}
+            className="fill-none stroke-blue-600"
+            strokeWidth={12}
+          />
+          <circle
+            cx={50}
+            cy={50}
+            r={35}
+            className="fill-none stroke-blue-500"
+            strokeWidth={6}
+          />
+        </svg>
       </div>
     ),
   },
@@ -743,7 +838,15 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">🔵</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <circle
+            cx={50}
+            cy={50}
+            r={35}
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -752,7 +855,13 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">🔺</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <polygon
+            points="50,20 80,80 20,80"
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -761,7 +870,13 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">⭐</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <polygon
+            points="50,20 80,80 20,80"
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -770,7 +885,16 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <PaperGrid />
-        <span className="text-5xl relative">⬛</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <rect
+            x={30}
+            y={20}
+            width={40}
+            height={60}
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -778,8 +902,14 @@ export const concepts4: ConceptData[] = [
     description: ["Flat"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
-        <PaperGrid />
-        <span className="text-5xl relative">🔲</span>
+        <ThreeDGrid />
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <polygon
+            points="30,60 70,60 80,80 20,80"
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -788,7 +918,26 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🔳</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <polygon
+            points="20,30 50,40 50,90 20,80"
+            className="stroke-blue-600 fill-blue-500"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+          <polygon
+            points="20,30 50,40 80,30 50,20"
+            className="stroke-blue-600 fill-blue-400"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+          <polygon
+            points="50,40 80,30 80,80 50,90"
+            className="stroke-blue-600 fill-blue-600"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     ),
   },
@@ -797,7 +946,26 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🟠</span>
+
+        <svg
+          className="w-full h-full relative text-blue-700"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <radialGradient id="sphereGradient" cx="25%" cy="25%" r="100%">
+              <stop offset="0%" stopColor="white" />
+              <stop offset="70%" stopColor="currentColor" />
+            </radialGradient>
+          </defs>
+          <circle
+            cx={50}
+            cy={55}
+            r={30}
+            className="stroke-blue-700"
+            fill="url(#sphereGradient)"
+            strokeWidth={4}
+          />
+        </svg>
       </div>
     ),
   },
@@ -806,7 +974,20 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🔺</span>
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <polygon
+            points="50,20 50,90 20,80"
+            className="stroke-blue-600 fill-blue-400"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+          <polygon
+            points="50,20 80,80 50,90"
+            className="stroke-blue-600 fill-blue-600"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     ),
   },
@@ -815,7 +996,39 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🟡</span>
+        <svg
+          className="w-full h-full relative text-blue-700"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <linearGradient
+              id="cylinderGradient"
+              x1="0%"
+              y1="50%"
+              x2="100%"
+              y2="50%"
+            >
+              <stop offset="0%" stopColor="white" />
+              <stop offset="70%" stopColor="currentColor" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M 20,20 L 80,20 L 80,80 Q 50,92 20,80 Z"
+            className="stroke-blue-600"
+            fill="url(#cylinderGradient)"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+          <ellipse
+            cx={50}
+            cy={20}
+            rx={30}
+            ry={10}
+            className="stroke-blue-600 fill-blue-400"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     ),
   },
@@ -824,7 +1037,30 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🔺</span>
+        <svg
+          className="w-full h-full relative text-blue-700"
+          viewBox="0 0 100 100"
+        >
+          <defs>
+            <linearGradient
+              id="coneGradient"
+              x1="0%"
+              y1="25%"
+              x2="100%"
+              y2="75%"
+            >
+              <stop offset="0%" stopColor="white" />
+              <stop offset="100%" stopColor="currentColor" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M 50,20 L 80,80 Q 50,92 20,80 Z"
+            className="stroke-blue-600"
+            fill="url(#coneGradient)"
+            strokeWidth={4}
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     ),
   },
@@ -833,7 +1069,7 @@ export const concepts4: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
         <ThreeDGrid />
-        <span className="text-5xl relative">🕳️</span>
+        <span className="text-5xl relative pt-2">🕳️</span>
       </div>
     ),
   },
@@ -845,7 +1081,7 @@ export const concepts4: ConceptData[] = [
         <span className="w-[35%] shrink-0 flex items-center justify-center">
           <span className="relative text-5xl inline-block rotate-90">⇤</span>
         </span>
-        <span className="relative w-[35%] h-[75%] shrink-0 bg-yellow-400 border border-amber-500" />
+        <span className="relative w-[35%] h-[75%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
       </div>
     ),
   },
@@ -858,7 +1094,7 @@ export const concepts4: ConceptData[] = [
           <span className="w-[35%] shrink-0 flex items-center justify-center">
             <span className="relative text-5xl inline-block -rotate-90">⇤</span>
           </span>
-          <span className="relative w-[45%] h-[20%] shrink-0 bg-yellow-400 border border-amber-500" />
+          <span className="relative w-[45%] h-[20%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
       </div>
     ),
@@ -875,7 +1111,7 @@ export const concepts4: ConceptData[] = [
               <span className="scale-x-[-1]">⇤</span>
             </span>
           </span>
-          <span className="relative w-[100%] h-[50%] shrink-0 bg-yellow-400 border border-amber-500" />
+          <span className="relative w-[100%] h-[50%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
       </div>
     ),
@@ -892,7 +1128,7 @@ export const concepts4: ConceptData[] = [
               <span>⇤</span>
             </span>
           </span>
-          <span className="relative w-[20%] h-[50%] shrink-0 bg-yellow-400 border border-amber-500" />
+          <span className="relative w-[20%] h-[50%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
       </div>
     ),
@@ -903,7 +1139,12 @@ export const concepts4: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
         <PaperGrid />
         <div className="relative flex flex-col h-full w-full items-center justify-end">
-          <span className="text-6xl">↥</span>
+          <span
+            className="text-6xl text-yellow-400"
+            style={{ WebkitTextStroke: "1px brown" }}
+          >
+            ↥
+          </span>
           <span className="h-[20%] w-full bg-black" />
         </div>
       </div>
@@ -915,7 +1156,12 @@ export const concepts4: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
         <PaperGrid />
         <div className="relative flex flex-col h-full w-full items-center justify-end rotate-180">
-          <span className="text-6xl">↥</span>
+          <span
+            className="text-6xl text-yellow-400"
+            style={{ WebkitTextStroke: "1px brown" }}
+          >
+            ↥
+          </span>
           <span className="h-[20%] w-full bg-black" />
         </div>
       </div>
@@ -927,7 +1173,12 @@ export const concepts4: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
         <PaperGrid />
         <div className="relative flex flex-col h-full w-full items-center justify-end -rotate-90">
-          <span className="text-6xl">↥</span>
+          <span
+            className="text-6xl text-yellow-400"
+            style={{ WebkitTextStroke: "1px brown" }}
+          >
+            ↥
+          </span>
           <span className="h-[20%] w-full bg-black" />
         </div>
       </div>
@@ -939,7 +1190,12 @@ export const concepts4: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
         <PaperGrid />
         <div className="relative flex flex-col h-full w-full items-center justify-end rotate-90">
-          <span className="text-6xl">↥</span>
+          <span
+            className="text-6xl text-yellow-400"
+            style={{ WebkitTextStroke: "1px brown" }}
+          >
+            ↥
+          </span>
           <span className="h-[20%] w-full bg-black" />
         </div>
       </div>
