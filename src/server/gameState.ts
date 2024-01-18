@@ -1,3 +1,4 @@
+import { wait } from "../client/utils/wait";
 import { initialGameState } from "../common/initialGameState";
 import { GameState } from "../common/models/GameStateSchema";
 import { Channel } from "./utils/Channel";
@@ -21,6 +22,7 @@ export async function updateGameState(
   updater: (oldState: GameState) => GameState
 ): Promise<GameState> {
   gameState = updater(getGameState());
+
   gameStateChannel.publish(gameState);
   gameStateDiffChannel.stateChanged(gameState);
   return gameState;
