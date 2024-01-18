@@ -15,16 +15,19 @@ const config = {
     },
 
     extend: {
-      dropShadow: {
-        glow: ["0px 0px 2.5px var(--tw-shadow-color)"],
-        "svg-glow": [
-          "0px 0px 0.025px var(--tw-shadow-color)",
-          "0px 0px 0.045px var(--tw-shadow-color)",
-          "0px 0px 0.075px var(--tw-shadow-color)",
-        ],
-        "svg-sm": ["0 0.5px 0.5px rgb(0 0 0 / 0.3)"],
-        "svg-md": ["0 0.6px 0.8px rgb(0 0 0 / 0.5)"],
-        "svg-lg": ["0 1px 1px rgb(0 0 0 / 0.4)"],
+      colors: {
+        brown: {
+          50: "#fdf8f6",
+          100: "#f2e8e5",
+          200: "#eaddd7",
+          300: "#e0cec7",
+          400: "#d2bab0",
+          500: "#bfa094",
+          600: "#a18072",
+          700: "#977669",
+          800: "#846358",
+          900: "#43302b",
+        },
       },
 
       fontSize: {

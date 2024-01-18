@@ -6,3 +6,7 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
+
+.concept-icon {
+  @apply absolute inset-0 flex items-center justify-center;
+}

@@ -5,11 +5,11 @@ import { ConceptData } from "./concepts";
 
 export const ConceptSquare: React.FC<{
   concept: ConceptData;
-  index: number;
-}> = ({ concept, index }) => {
+  orientation?: "left" | "right";
+}> = ({ concept, orientation = "left" }) => {
   const [tooltipOpen, setTooltipOpen] = React.useState(false);
 
-  const isOdd = index % 2 === 1;
+  const isOdd = orientation == "left";
 
   const parkingSpace = (
     <div
@@ -28,21 +28,23 @@ export const ConceptSquare: React.FC<{
       )}
     >
       {!isOdd && parkingSpace}
-      <div
-        onMouseEnter={() => setTooltipOpen(true)}
-        onMouseLeave={() => setTooltipOpen(false)}
-        className={classNames(
-          "w-20 h-20 bg-slate-100 rounded-sm relative flex items-center justify-center"
-        )}
-      >
+      <div className="relative">
         <ConceptTooltip
           description={concept.description}
           open={tooltipOpen}
           isOdd={isOdd}
         />
-        <span className="text-center break-all text-3xl leading-tight select-none">
-          {concept.icon}
-        </span>
+        <div
+          onMouseEnter={() => setTooltipOpen(true)}
+          onMouseLeave={() => setTooltipOpen(false)}
+          className={classNames(
+            "w-[4.5rem] h-[4.5rem] bg-slate-100 rounded-lg overflow-hidden border border-slate-300 relative flex items-center justify-center"
+          )}
+        >
+          <span className="text-center break-all text-3xl leading-tight select-none">
+            {concept.icon}
+          </span>
+        </div>
       </div>
       {isOdd && parkingSpace}
     </div>
@@ -67,7 +69,7 @@ const ConceptTooltip: React.FC<{
     >
       <div
         className={classNames(
-          "shadow-slate-800/50 shadow-lg p-4 rounded bg-slate-100 text-slate-800",
+          "shadow-slate-800/50 shadow-lg p-4 rounded bg-slate-100 marker:text-slate-800",
           "absolute pointer-events-none top-0 mx-2 z-20",
           isOdd ? "left-full text-left" : "right-full text-right"
         )}

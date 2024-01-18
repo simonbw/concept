@@ -8,115 +8,227 @@ export interface ConceptData {
 export const concepts1: ConceptData[] = [
   {
     description: ["Object", "Box"],
-    icon: <span className="text-5xl">📦</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-blue-500 to-transparent">
+        <span className="text-5xl">📦</span>
+      </div>
+    ),
   },
   {
     description: ["Human", "Society", "Group"],
-    icon: <span className="text-3xl">👥👥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-orange-400/50 to-orange-300/40">
+        <span className="text-3xl">👥👥</span>
+      </div>
+    ),
   },
   {
     description: ["Human", "Real", "Historical"],
-    icon: <span className="text-5xl">🎩</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-orange-600/80 to-orange-600/90">
+        <span className="text-5xl">🎩</span>
+      </div>
+    ),
   },
   {
     description: ["Character", "Fictional", "Imaginary"],
-    icon: <span className="text-5xl">🧚</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-600 to-blue-500/50">
+        <span className="text-5xl">🧚</span>
+      </div>
+    ),
   },
   {
     description: ["Work", "Occupation"],
-    icon: <span className="text-5xl">👷</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-yellow-300/50 to-yellow-500/90">
+        <span className="text-5xl">👷</span>
+      </div>
+    ),
   },
   {
     description: ["Hobby", "Sport"],
-    icon: <span className="text-5xl">⚽</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-purple-600 to-purple-700">
+        <span className="text-5xl">⚽</span>
+      </div>
+    ),
   },
   {
     description: ["Fauna", "Animal"],
-    icon: <span className="text-3xl">🐙🦆🐄🐘</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-blue-500/50 to-blue-500/25">
+        <span className="text-3xl">🐙🦆🐄🐘</span>
+      </div>
+    ),
   },
   {
     description: ["Flora", "Plant", "Nature"],
-    icon: <span className="text-3xl">🌱🌳🌹</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-blue-500/50 to-blue-500/25">
+        <span className="text-3xl">🌱🌳🌹</span>
+      </div>
+    ),
   },
   {
     description: ["Literature", "Writing", "Book"],
-    icon: <span className="text-5xl">📚</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-brown-500 to-brown-500/25">
+        <span className="text-5xl">📚</span>
+      </div>
+    ),
   },
   {
     description: ["Music", "Song"],
-    icon: <span className="text-5xl">🎵</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-amber-700/20 to-amber-700/25">
+        <span className="text-5xl">🎵</span>
+      </div>
+    ),
   },
   {
     description: ["Cinema", "Movie"],
-    icon: <span className="text-5xl">🎥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-sky-300 to-sky-400">
+        <span className="text-5xl">🎥</span>
+      </div>
+    ),
   },
   {
     description: ["Art", "Sculpture", "Painting", "Drawing", "Cartoon"],
-    icon: <span className="text-5xl">🎨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-sky-500 to-sky-300">
+        <span className="text-5xl">🎨</span>
+      </div>
+    ),
   },
   {
     description: ["Televison", "Program", "Show"],
-    icon: <span className="text-5xl">📺</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-tr from-blue-500 to-blue-700">
+        <span className="text-5xl">📺</span>
+      </div>
+    ),
   },
   {
     description: ["Title", "Brand", "Name"],
-    icon: <span className="text-5xl">🏷️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-yellow-500 to-amber-500">
+        <span className="text-5xl">🏷️</span>
+      </div>
+    ),
   },
   {
     description: ["Idea", "Intelligence", "Concept"],
-    icon: <span className="text-5xl">💡</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-indigo-600 to-indigo-700">
+        <span className="text-5xl">💡</span>
+      </div>
+    ),
   },
   {
     description: ["Expression", "Quote", "Talking", "Words"],
-    icon: <span className="text-5xl">💬</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-cyan-700 to-cyan-900">
+        <span className="text-5xl">💬</span>
+      </div>
+    ),
   },
   {
     description: ["Place", "Country", "World", "Flag"],
-    icon: <span className="text-3xl">🌍⛳️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-indigo-800 to-indigo-900">
+        <span className="text-3xl">🌍⛳️</span>
+      </div>
+    ),
   },
   {
     description: ["Building", "Monument", "City"],
-    icon: <span className="text-5xl">🏙️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-sky-500 to-sky-100">
+        <span className="text-5xl">🏙️</span>
+      </div>
+    ),
   },
   {
     description: ["Date", "Event", "Day"],
-    icon: <span className="text-5xl">📅</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-sky-500 to-sky-200">
+        <span className="text-5xl">📅</span>
+      </div>
+    ),
   },
   {
     description: ["Celebration", "Anniversary", "Holiday"],
-    icon: <span className="text-5xl">🎉</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-yellow-100/50 to-yellow-200/50">
+        <span className="text-5xl">🎉</span>
+      </div>
+    ),
   },
   {
     description: ["Seacraft", "Naval", "Swimming"],
-    icon: <span className="text-5xl">🚢</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-700 to-sky-600">
+        <span className="text-5xl">🚢</span>
+      </div>
+    ),
   },
   {
     description: ["Aircraft", "Aerial", "Flying"],
-    icon: <span className="text-3xl">✈️🚁</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-sky-500 to-sky-200">
+        <span className="text-3xl">✈️🚁</span>
+      </div>
+    ),
   },
   {
     description: ["Ground Transportation", "Road"],
-    icon: <span className="text-5xl">🚗</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-tr from-green-700 to-black">
+        <span className="text-5xl">🚗</span>
+      </div>
+    ),
   },
   {
     description: ["Tool", "Construction"],
-    icon: <span className="text-5xl">🔨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-tr from-orange-500 to-yellow-100">
+        <span className="text-5xl">🔨</span>
+      </div>
+    ),
   },
   {
     description: ["Game", "Toy"],
-    icon: <span className="text-5xl">🎲🧸</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-tl from-orange-400 to-yellow-200">
+        <span className="text-3xl">🧸🎲</span>
+      </div>
+    ),
   },
   {
     description: ["Clothing", "Accessory", "Costume"],
-    icon: <span className="text-3xl">👗👔</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-indigo-400 to-fuchsia-400">
+        <span className="text-3xl">👗👔</span>
+      </div>
+    ),
   },
   {
     description: ["Food", "Eating", "Edible"],
-    icon: <span className="text-3xl">🥛🍔🍜🍽️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-orange-400 to-amber-300">
+        <span className="text-3xl">🥛🍔🍜🍽️</span>
+      </div>
+    ),
   },
   {
     description: ["House", "Dwelling", "Room", "Domestic"],
-    icon: <span className="text-5xl">🏠</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-sky-900/70 to-sky-100/60">
+        <span className="text-5xl">🏠</span>
+      </div>
+    ),
   },
 ];
 
