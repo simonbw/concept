@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { classNames } from "../utils/classNames";
 
 export interface ConceptData {
   description: string[];
@@ -649,327 +650,441 @@ export const concepts3: ConceptData[] = [
   },
 ];
 
+const PaperGrid: React.FC = () => {
+  return (
+    <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
+      {Array.from({ length: 12 * 12 }).map((_, i) => (
+        <span className="border-[0.5px] border-gray-600/25" />
+      ))}
+    </div>
+  );
+};
+
+const ThreeDGrid: React.FC = () => {
+  return (
+    <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-b from-sky-400/50 to-slate-100">
+      <div className="w-full h-[50%]">
+        <div className="grid grid-cols-12 grid-rows-12 w-full h-full">
+          {Array.from({ length: 12 * 12 }).map((_, i) => (
+            <span className="border-[0.5px] border-gray-600/25" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const concepts4: ConceptData[] = [
   {
     description: ["Line / Straight", "Diagonal", "Stiff"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">{"/"}</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">{"/"}</span>
       </div>
     ),
   },
   {
     description: ["Arc / Curve", "Rounded", "Flexible"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⌒</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">⌒</span>
       </div>
     ),
   },
   {
     description: ["Cross", "Crossing", "Addition"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">+</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">+</span>
       </div>
     ),
   },
   {
     description: ["Angles", "Sharp", "Jagged"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">📈</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">📈</span>
       </div>
     ),
   },
   {
     description: ["Spiral", "Drunkenness", "Coil"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🌀</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🌀</span>
       </div>
     ),
   },
   {
     description: ["Wavy", "Ripple", "Hair"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">〰</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">〰</span>
       </div>
     ),
   },
   {
     description: ["Circle", "Ring"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⭕</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">⭕</span>
       </div>
     ),
   },
   {
     description: ["Round"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔵</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🔵</span>
       </div>
     ),
   },
   {
     description: ["Triangle"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔺</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🔺</span>
       </div>
     ),
   },
   {
     description: ["Star"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⭐</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">⭐</span>
       </div>
     ),
   },
   {
     description: ["Square", "Rectangle"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⬛</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">⬛</span>
       </div>
     ),
   },
   {
     description: ["Flat"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔲</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🔲</span>
       </div>
     ),
   },
   {
     description: ["Cube"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔳</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🔳</span>
       </div>
     ),
   },
   {
     description: ["Sphere"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟠</span>
-      </div>
-    ),
-  },
-  {
-    description: ["Cylinder"],
-    icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟡</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🟠</span>
       </div>
     ),
   },
   {
     description: ["Pyramid"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔺</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🔺</span>
+      </div>
+    ),
+  },
+  {
+    description: ["Cylinder"],
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🟡</span>
       </div>
     ),
   },
   {
     description: ["Cone"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔺</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🔺</span>
       </div>
     ),
   },
   {
     description: ["Hollow", "Hole", "Pierced"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🕳️</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ThreeDGrid />
+        <span className="text-5xl relative">🕳️</span>
       </div>
     ),
   },
   {
     description: ["Big", "High"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="inline-block rotate-90">⇤</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full gap-1">
+        <PaperGrid />
+        <span className="w-[35%] shrink-0 flex items-center justify-center">
+          <span className="relative text-5xl inline-block rotate-90">⇤</span>
+        </span>
+        <span className="relative w-[35%] h-[75%] shrink-0 bg-yellow-400 border border-amber-500" />
       </div>
     ),
   },
   {
     description: ["Small", "Low"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="inline-block -rotate-90">⇤</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
+        <PaperGrid />
+        <div className="flex items-end justify-center gap-2 h-[75%]">
+          <span className="w-[35%] shrink-0 flex items-center justify-center">
+            <span className="relative text-5xl inline-block -rotate-90">⇤</span>
+          </span>
+          <span className="relative w-[45%] h-[20%] shrink-0 bg-yellow-400 border border-amber-500" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Fat", "Large", "Long"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↔</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
+        <PaperGrid />
+        <div className="flex flex-col items-center justify-center h-[75%] gap-1">
+          <span className="shrink-0 h-[50%] flex items-center justify-center">
+            <span className="relative text-3xl flex items-center justify-center tracking-[-0.2em]">
+              <span>⇤</span>
+              <span className="scale-x-[-1]">⇤</span>
+            </span>
+          </span>
+          <span className="relative w-[100%] h-[50%] shrink-0 bg-yellow-400 border border-amber-500" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Thin / Fine", "Narrow", "Short"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↔</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
+        <PaperGrid />
+        <div className="flex flex-col items-center justify-center h-[75%] gap-1">
+          <span className="shrink-0 h-[50%] flex items-center justify-center">
+            <span className="relative text-3xl flex items-center justify-center tracking-[-0.2em]">
+              <span className="scale-x-[-1]">⇤</span>
+              <span>⇤</span>
+            </span>
+          </span>
+          <span className="relative w-[20%] h-[50%] shrink-0 bg-yellow-400 border border-amber-500" />
+        </div>
       </div>
     ),
   },
   {
     description: ["High", "Climb", "Above"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↥</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <div className="relative flex flex-col h-full w-full items-center justify-end">
+          <span className="text-6xl">↥</span>
+          <span className="h-[20%] w-full bg-black" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Low", "Descend", "Below"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↧</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <div className="relative flex flex-col h-full w-full items-center justify-end rotate-180">
+          <span className="text-6xl">↥</span>
+          <span className="h-[20%] w-full bg-black" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Left", "Beginning", "Before / Past"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↤</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <div className="relative flex flex-col h-full w-full items-center justify-end -rotate-90">
+          <span className="text-6xl">↥</span>
+          <span className="h-[20%] w-full bg-black" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Right", "End", "After / Future"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">↦</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <div className="relative flex flex-col h-full w-full items-center justify-end rotate-90">
+          <span className="text-6xl">↥</span>
+          <span className="h-[20%] w-full bg-black" />
+        </div>
       </div>
     ),
   },
   {
     description: ["Turn", "Around", "Cycle / Repetition"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔄</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🔄</span>
       </div>
     ),
   },
   {
     description: ["Use / Action", "Do / Verb", "Button"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔘</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <PaperGrid />
+        <span className="text-5xl relative">🔘</span>
       </div>
     ),
   },
 ];
 
+const ColorBackground: React.FC = () => {
+  return (
+    <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 bg-gradient-to-br from-brown-600 to-brown-700">
+      {Array.from({ length: 3 * 3 }).map((_, i) => (
+        <span
+          className={classNames(
+            i % 2 === 0 ? "bg-amber-400/40" : "bg-brown-300 / 30"
+          )}
+        />
+      ))}
+    </div>
+  );
+};
+
 export const concepts5: ConceptData[] = [
   {
     description: ["Red"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟥</span>
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-red-500 border-red-700" />
       </div>
     ),
   },
   {
     description: ["Orange"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟧</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-orange-500 border-orange-700" />
       </div>
     ),
   },
   {
     description: ["Yellow"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟨</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-yellow-300 border-yellow-500" />
       </div>
     ),
   },
   {
     description: ["Green"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟩</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-green-500 border-green-700" />
       </div>
     ),
   },
   {
     description: ["Blue"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟦</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-blue-500 border-blue-700" />
       </div>
     ),
   },
   {
     description: ["Purple"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟪</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-purple-700 border-purple-900" />
       </div>
     ),
   },
   {
     description: ["Pink"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🩷</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-pink-400 border-pink-600" />
       </div>
     ),
   },
   {
     description: ["Brown"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🟫</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-brown-600 border-brown-800" />
       </div>
     ),
   },
   {
     description: ["Black"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⬛</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-black border-black" />
       </div>
     ),
   },
   {
     description: ["Gray"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⬜️</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-gray-400 border-gray-600" />
       </div>
     ),
   },
   {
     description: ["White"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">⬜</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-white border-gray-300" />
       </div>
     ),
   },
   {
     description: ["Transparent", "Invisible", "Glass"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
-        <span className="text-5xl">🔳</span>
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+        <ColorBackground />
+        <span className="relative text-5xl w-[70%] h-[70%] border-2 rounded-lg bg-gradient-to-br from-white/90 to-white/10 border-white/90" />
       </div>
     ),
   },
