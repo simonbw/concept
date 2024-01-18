@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-export const pieceSizeSchema = z.enum(["small", "medium", "large"]);
+export const pieceSizeSchema = z.enum(["large", "medium", "small"]);
 export type PieceSize = z.infer<typeof pieceSizeSchema>;
 
 export const pieceColorSchema = z.enum([
-  "red",
   "green",
+  "red",
   "blue",
   "yellow",
   "black",

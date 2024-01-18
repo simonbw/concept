@@ -6,7 +6,9 @@ import {
   pieceColorSchema,
   pieceSizeSchema,
 } from "../../common/models/GameStateSchema";
+import { useGameState } from "../hooks/useGameState";
 import { trpcClient } from "../trpc/trpcClient";
+import { classNames } from "../utils/classNames";
 import { GamePieceIcon } from "./GamePieceIcon";
 
 export const PieceStacks: React.FC = () => {
@@ -14,9 +16,11 @@ export const PieceStacks: React.FC = () => {
     <div className="flex gap-6 justify-center my-8">
       {pieceColorSchema.options.map((color) => (
         <div key={color} className="flex gap-2 items-center">
-          {pieceSizeSchema.options.map((size) => (
-            <PieceStackButton key={size} color={color} size={size} />
-          ))}
+          {pieceSizeSchema.options
+            .filter((size) => size !== "medium")
+            .map((size) => (
+              <PieceStackButton key={size} color={color} size={size} />
+            ))}
         </div>
       ))}
       <button onClick={() => trpcClient.gameState.reset.mutate()}>
@@ -30,6 +34,16 @@ const PieceStackButton: React.FC<{
   color: PieceColor;
   size: PieceSize;
 }> = ({ size, color }) => {
+  const gameState = useGameState();
+  const existing =
+    gameState?.pieces.filter((p) => p.color === color && p.size === size)
+      .length ?? 0;
+
+  const disabled =
+    (size === "large" && existing >= 1) ||
+    (size === "medium" && existing >= 1) ||
+    (size === "small" && existing >= 8);
+
   const [dragPosition, setDragPosition] = React.useState<{
     x: number;
     y: number;
@@ -63,7 +77,7 @@ const PieceStackButton: React.FC<{
   }, [originRef.current]);
 
   return (
-    <span ref={originRef}>
+    <span ref={originRef} className={classNames(disabled && "invisible")}>
       <Draggable
         position={dragPosition ?? { x: 0, y: 0 }}
         key={size}

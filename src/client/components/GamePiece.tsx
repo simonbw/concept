@@ -22,12 +22,12 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
       show
       appear
       as="div"
-      enter="transition duration-300"
-      enterFrom="scale-0 opacity-0"
-      enterTo="scale-100 opacity-100"
-      leave="transition duration-300"
-      leaveFrom="scale-100 opacity-100"
-      leaveTo="scale-0 opacity-0"
+      enter="transition-opacity duration-500"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="transition duration-500"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
     >
       <Draggable
         offsetParent={boardRef}
