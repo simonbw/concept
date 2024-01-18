@@ -414,8 +414,12 @@ export const concepts2: ConceptData[] = [
     description: ["Torso", "Stomach", "Body"],
     icon: (
       <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
-        <span className="text-xl align-middle tracking-[-0.3em]">
-          →<span className="text-5xl align-middle">🧍</span>←
+        <span className="text-2xl align-middle flex justify-center items-center">
+          <span className="relative font-bold">→</span>
+          <span className="text-9xl text-center w-10 flex justify-center">
+            🧍
+          </span>
+          <span className="relative font-bold">←</span>
         </span>
       </div>
     ),
