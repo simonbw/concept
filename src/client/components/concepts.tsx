@@ -235,376 +235,743 @@ export const concepts1: ConceptData[] = [
 export const concepts2: ConceptData[] = [
   {
     description: ["Baby", "Child", "Young", "New"],
-    icon: <span className="text-3xl">👶🧒</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-orange-300/50 to-orange-200/30">
+        <span className="text-3xl">👶🧒</span>
+      </div>
+    ),
   },
   {
     description: ["Adult", "Elderly", "Old", "Past"],
-    icon: <span className="text-3xl">👴👵</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-gray-200 to-gray-400">
+        <span className="text-3xl">👴👵</span>
+      </div>
+    ),
   },
   {
     description: ["Feminine", "Female"],
-    icon: <span className="text-3xl">♀️👩</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-white to-pink-300">
+        <span className="text-3xl">♀️👩</span>
+      </div>
+    ),
   },
   {
     description: ["Masculine", "Male"],
-    icon: <span className="text-3xl">♂️🧔‍♂️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-white to-blue-300">
+        <span className="text-3xl">♂️🧔‍♂️</span>
+      </div>
+    ),
   },
   {
     description: ["Slow", "Slow Motion"],
-    icon: <span className="text-5xl">🐢</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-black to-black">
+        <span className="text-5xl">🐢</span>
+      </div>
+    ),
   },
   {
     description: ["Fast", "Race"],
-    icon: <span className="text-5xl">🐇</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-black to-black">
+        <span className="text-5xl">🐇</span>
+      </div>
+    ),
   },
   {
     description: ["Defense", "Protection", "Wall"],
-    icon: <span className="text-5xl">🛡️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-sky-800 to-sky-600">
+        <span className="text-5xl">🛡️</span>
+      </div>
+    ),
   },
   {
     description: ["Attack", "Conflict", "Combat", "Weapon"],
-    icon: <span className="text-5xl">⚔️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-black to-black">
+        <span className="text-5xl">⚔️</span>
+      </div>
+    ),
   },
   {
     description: ["Life", "Heart", "Love"],
-    icon: <span className="text-5xl">❤️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-fuchsia-200 to-pink-100">
+        <span className="text-5xl">❤️</span>
+      </div>
+    ),
   },
   {
     description: ["Death", "Bad", "Illness"],
-    icon: <span className="text-5xl">💀</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-red-800 to-black">
+        <span className="text-5xl">💀</span>
+      </div>
+    ),
   },
   {
     description: ["Happy", "Positive"],
-    icon: <span className="text-5xl">😀</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-sky-500 to-white">
+        <span className="text-5xl">😀</span>
+      </div>
+    ),
   },
   {
     description: ["Sad", "Negative"],
-    icon: <span className="text-5xl">😥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-sky-600 to-cyan-900">
+        <span className="text-5xl">😥</span>
+      </div>
+    ),
   },
   {
     description: ["Electronic", "Computing"],
-    icon: <span className="text-5xl">💻</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-green-700 to-green-600">
+        <span className="text-5xl">💻</span>
+      </div>
+    ),
   },
   {
     description: ["Mechanical", "Industrial"],
-    icon: <span className="text-3xl">⚙️🏭</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-700 to-slate-600">
+        <span className="text-3xl">⚙️🏭</span>
+      </div>
+    ),
   },
   {
     description: ["Money", "Rich", "Expensive"],
-    icon: <span className="text-5xl">💰</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-red-500 to-red-700">
+        <span className="text-5xl">💰</span>
+      </div>
+    ),
   },
   {
     description: ["Time", "Duration"],
-    icon: <span className="text-3xl">⏳🕰️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-black to-white">
+        <span className="text-3xl">⏳🕰️</span>
+      </div>
+    ),
   },
   {
     description: ["Religion", "Myth", "Spirituality"],
-    icon: <span className="text-5xl">🕍</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-white to-yellow-500">
+        <span className="text-5xl">🕍</span>
+      </div>
+    ),
   },
   {
     description: ["Power", "Politics"],
-    icon: <span className="text-5xl">👑</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-red-900 to-red-600">
+        <span className="text-5xl">👑</span>
+      </div>
+    ),
   },
   {
     description: ["Science", "Math"],
-    icon: <span className="text-3xl">🧪🧮</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-slate-900 to-brown-600">
+        <span className="text-3xl">🧪🧮</span>
+      </div>
+    ),
   },
   {
     description: ["Medical", "Medicine", "Health"],
-    icon: <span className="text-3xl">💉🏥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-green-950 to-green-950">
+        <span className="text-3xl">💉🏥</span>
+      </div>
+    ),
   },
   {
     description: ["Head", "Face", "Neck"],
-    icon: <span className="text-5xl">👤</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">👤</span>
+      </div>
+    ),
   },
   {
     description: ["Arm", "Hand", "Finger"],
-    icon: <span className="text-5xl">💪</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">💪</span>
+      </div>
+    ),
   },
   {
     description: ["Torso", "Stomach", "Body"],
     icon: (
-      <span className="text-xl align-middle tracking-[-0.3em]">
-        →<span className="text-5xl align-middle">🧍</span>←
-      </span>
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-xl align-middle tracking-[-0.3em]">
+          →<span className="text-5xl align-middle">🧍</span>←
+        </span>
+      </div>
     ),
   },
   {
     description: ["Leg", "Foot"],
-    icon: <span className="text-5xl">🦵</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">🦵</span>
+      </div>
+    ),
   },
   {
     description: ["Ear", "Hear", "Sound"],
-    icon: <span className="text-5xl">👂</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">👂</span>
+      </div>
+    ),
   },
   {
     description: ["Nose", "Scent", "Smelling"],
-    icon: <span className="text-5xl">👃</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">👃</span>
+      </div>
+    ),
   },
   {
     description: ["Eye", "Sight"],
-    icon: <span className="text-5xl">👁️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">👁️</span>
+      </div>
+    ),
   },
   {
     description: ["Mouth", "Taste"],
-    icon: <span className="text-5xl">👄</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-blue-300 to-white">
+        <span className="text-5xl">👄</span>
+      </div>
+    ),
   },
 ];
 
 export const concepts3: ConceptData[] = [
   {
     description: ["Cold", "Snow / Rain", "Cloud"],
-    icon: <span className="text-5xl">🌧️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-slate-100 to-slate-500">
+        <span className="text-5xl">🌧️</span>
+      </div>
+    ),
   },
   {
     description: ["Hot", "Day / Light", "Sun"],
-    icon: <span className="text-5xl">🌞</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-sky-500 to-sky-100">
+        <span className="text-5xl">🌞</span>
+      </div>
+    ),
   },
   {
     description: ["Night / Evening", "Space", "Moon / Stars"],
-    icon: <span className="text-3xl">🌙✨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-purple-900 to-black">
+        <span className="text-3xl">🌙✨</span>
+      </div>
+    ),
   },
   {
     description: ["Lightning / Storm", "Electricity", "Anger"],
-    icon: <span className="text-5xl">🌩️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-gray-500 to-purple-800">
+        <span className="text-5xl">🌩️</span>
+      </div>
+    ),
   },
   {
     description: ["Fire", "Burn", "Cooking"],
-    icon: <span className="text-5xl">🔥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-red-500 to-orange-400">
+        <span className="text-5xl">🔥</span>
+      </div>
+    ),
   },
   {
     description: ["Water", "Liquid", "Aquatic"],
-    icon: <span className="text-5xl">💧</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-t from-blue-500 to-cyan-500">
+        <span className="text-5xl">💧</span>
+      </div>
+    ),
   },
   {
     description: ["Air", "Wind", "Blowing"],
-    icon: <span className="text-5xl">💨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-sky-500 to-sky-200">
+        <span className="text-5xl">💨</span>
+      </div>
+    ),
   },
   {
     description: ["Earth", "Ground"],
-    icon: <span className="text-5xl">🌎</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-b from-amber-400 to-brown-600">
+        <span className="text-5xl">🌎</span>
+      </div>
+    ),
   },
   {
     description: ["Stone", "Mineral", "Hard"],
-    icon: <span className="text-5xl">🪨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">🪨</span>
+      </div>
+    ),
   },
   {
     description: ["Wood"],
-    icon: <span className="text-5xl">🪵</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">🪵</span>
+      </div>
+    ),
   },
   {
     description: ["Metal"],
-    icon: <span className="text-5xl">🔩</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">🔩</span>
+      </div>
+    ),
   },
   {
     description: ["Fabric"],
-    icon: <span className="text-5xl">🧶</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">🧶</span>
+      </div>
+    ),
   },
   {
     description: ["Rubber", "Plastic"],
-    icon: <span className="text-5xl">♳</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">♳</span>
+      </div>
+    ),
   },
   {
     description: ["Paper", "Sheet"],
-    icon: <span className="text-5xl">📄</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
+        <span className="text-5xl">📄</span>
+      </div>
+    ),
   },
   {
     description: ["Opposite", "Reverse"],
-    icon: <span className="text-5xl">🔄</span>,
+    icon: (
+      <div className="flex justify-stretch items-stretch w-full h-full tracking-[-0.25em]">
+        <span className="text-4xl w-[50%] grow h-full text-black bg-white flex items-center justify-end">
+          <span>←</span>
+        </span>
+        <span className="text-4xl w-[50%] grow h-full text-white bg-black flex items-center justify-start">
+          <span className="scale-x-[-1]">←</span>
+        </span>
+      </div>
+    ),
   },
   {
     description: ["Cut / Break", "Separation", "Half"],
-    icon: <span className="text-5xl">✂️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">✂️</span>
+      </div>
+    ),
   },
   {
     description: ["Fragment", "Multitude", "Cluster"],
-    icon: <span className="text-5xl">🔢</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">🔢</span>
+      </div>
+    ),
   },
   {
     description: ["Part", "Fragment", "Assembly"],
-    icon: <span className="text-5xl">🧩</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">🧩</span>
+      </div>
+    ),
   },
   {
     description: ["Inside", "Internal"],
-    icon: <span className="text-5xl">📥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">📥</span>
+      </div>
+    ),
   },
   {
     description: ["Grill / Wire", "Network", "Grid"],
-    icon: <span className="text-3xl tracking-wide">⬜️ ⬜️ ⬜️ ⬜️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <div className="grid grid-cols-6 grid-rows-6 w-full h-full">
+          {Array.from({ length: 6 * 6 }).map((_, i) => (
+            <span className="border border-gray-600" />
+          ))}
+        </div>
+      </div>
+    ),
   },
   {
     description: ["Zero", "Nonce", "Nothing"],
-    icon: <span className="text-5xl">0️⃣</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">0️⃣</span>
+      </div>
+    ),
   },
   {
     description: ["One", "Unit", "Number"],
-    icon: <span className="text-5xl">1️⃣</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
+        <span className="text-5xl">1️⃣</span>
+      </div>
+    ),
   },
 ];
 
 export const concepts4: ConceptData[] = [
   {
     description: ["Line / Straight", "Diagonal", "Stiff"],
-    icon: <span className="text-5xl">{"/"}</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">{"/"}</span>
+      </div>
+    ),
   },
   {
     description: ["Arc / Curve", "Rounded", "Flexible"],
-    icon: <span className="text-5xl">⌒</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⌒</span>
+      </div>
+    ),
   },
   {
     description: ["Cross", "Crossing", "Addition"],
-    icon: <span className="text-5xl">+</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">+</span>
+      </div>
+    ),
   },
   {
     description: ["Angles", "Sharp", "Jagged"],
-    icon: <span className="text-5xl">📈</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">📈</span>
+      </div>
+    ),
   },
   {
     description: ["Spiral", "Drunkenness", "Coil"],
-    icon: <span className="text-5xl">🌀</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🌀</span>
+      </div>
+    ),
   },
   {
     description: ["Wavy", "Ripple", "Hair"],
-    icon: <span className="text-5xl">〰</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">〰</span>
+      </div>
+    ),
   },
   {
     description: ["Circle", "Ring"],
-    icon: <span className="text-5xl">⭕</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⭕</span>
+      </div>
+    ),
   },
   {
     description: ["Round"],
-    icon: <span className="text-5xl">🔵</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔵</span>
+      </div>
+    ),
   },
   {
     description: ["Triangle"],
-    icon: <span className="text-5xl">🔺</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔺</span>
+      </div>
+    ),
   },
   {
     description: ["Star"],
-    icon: <span className="text-5xl">⭐</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⭐</span>
+      </div>
+    ),
   },
   {
     description: ["Square", "Rectangle"],
-    icon: <span className="text-5xl">⬛</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⬛</span>
+      </div>
+    ),
   },
   {
     description: ["Flat"],
-    icon: <span className="text-5xl">🔲</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔲</span>
+      </div>
+    ),
   },
   {
     description: ["Cube"],
-    icon: <span className="text-5xl">🔳</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔳</span>
+      </div>
+    ),
   },
   {
     description: ["Sphere"],
-    icon: <span className="text-5xl">🟠</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟠</span>
+      </div>
+    ),
   },
   {
     description: ["Cylinder"],
-    icon: <span className="text-5xl">🟡</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟡</span>
+      </div>
+    ),
   },
   {
     description: ["Pyramid"],
-    icon: <span className="text-5xl">🔺</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔺</span>
+      </div>
+    ),
   },
   {
     description: ["Cone"],
-    icon: <span className="text-5xl">🔺</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔺</span>
+      </div>
+    ),
   },
   {
     description: ["Hollow", "Hole", "Pierced"],
-    icon: <span className="text-5xl">🕳️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🕳️</span>
+      </div>
+    ),
   },
   {
     description: ["Big", "High"],
-    icon: <span className="inline-block rotate-90">⇤</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="inline-block rotate-90">⇤</span>
+      </div>
+    ),
   },
   {
     description: ["Small", "Low"],
-    icon: <span className="inline-block -rotate-90">⇤</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="inline-block -rotate-90">⇤</span>
+      </div>
+    ),
   },
   {
     description: ["Fat", "Large", "Long"],
-    icon: <span className="text-5xl">↔</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↔</span>
+      </div>
+    ),
   },
   {
     description: ["Thin / Fine", "Narrow", "Short"],
-    icon: <span className="text-5xl">↔</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↔</span>
+      </div>
+    ),
   },
   {
     description: ["High", "Climb", "Above"],
-    icon: <span className="text-5xl">↥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↥</span>
+      </div>
+    ),
   },
   {
     description: ["Low", "Descend", "Below"],
-    icon: <span className="text-5xl">↧</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↧</span>
+      </div>
+    ),
   },
   {
     description: ["Left", "Beginning", "Before / Past"],
-    icon: <span className="text-5xl">↤</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↤</span>
+      </div>
+    ),
   },
   {
     description: ["Right", "End", "After / Future"],
-    icon: <span className="text-5xl">↦</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">↦</span>
+      </div>
+    ),
   },
   {
     description: ["Turn", "Around", "Cycle / Repetition"],
-    icon: <span className="text-5xl">🔄</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔄</span>
+      </div>
+    ),
   },
   {
     description: ["Use / Action", "Do / Verb", "Button"],
-    icon: <span className="text-5xl">🔘</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔘</span>
+      </div>
+    ),
   },
 ];
 
 export const concepts5: ConceptData[] = [
   {
     description: ["Red"],
-    icon: <span className="text-5xl">🟥</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟥</span>
+      </div>
+    ),
   },
   {
     description: ["Orange"],
-    icon: <span className="text-5xl">🟧</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟧</span>
+      </div>
+    ),
   },
   {
     description: ["Yellow"],
-    icon: <span className="text-5xl">🟨</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟨</span>
+      </div>
+    ),
   },
   {
     description: ["Green"],
-    icon: <span className="text-5xl">🟩</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟩</span>
+      </div>
+    ),
   },
   {
     description: ["Blue"],
-    icon: <span className="text-5xl">🟦</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟦</span>
+      </div>
+    ),
   },
   {
     description: ["Purple"],
-    icon: <span className="text-5xl">🟪</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟪</span>
+      </div>
+    ),
   },
   {
     description: ["Pink"],
-    icon: <span className="text-5xl">🩷</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🩷</span>
+      </div>
+    ),
   },
   {
     description: ["Brown"],
-    icon: <span className="text-5xl">🟫</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🟫</span>
+      </div>
+    ),
   },
   {
     description: ["Black"],
-    icon: <span className="text-5xl">⬛</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⬛</span>
+      </div>
+    ),
   },
   {
     description: ["Gray"],
-    icon: <span className="text-5xl">⬜️</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⬜️</span>
+      </div>
+    ),
   },
   {
     description: ["White"],
-    icon: <span className="text-5xl">⬜</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">⬜</span>
+      </div>
+    ),
   },
   {
     description: ["Transparent", "Invisible", "Glass"],
-    icon: <span className="text-5xl">🔳</span>,
+    icon: (
+      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
+        <span className="text-5xl">🔳</span>
+      </div>
+    ),
   },
 ];
 

@@ -41,9 +41,7 @@ export const ConceptSquare: React.FC<{
             "w-[4.5rem] h-[4.5rem] bg-slate-100 rounded-lg overflow-hidden border border-slate-300 relative flex items-center justify-center"
           )}
         >
-          <span className="text-center break-all text-3xl leading-tight select-none">
-            {concept.icon}
-          </span>
+          {concept.icon}
         </div>
       </div>
       {isOdd && parkingSpace}

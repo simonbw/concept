@@ -9,4 +9,5 @@
 
 .concept-icon {
   @apply absolute inset-0 flex items-center justify-center;
+  @apply text-center break-all text-3xl leading-tight select-none;
 }
