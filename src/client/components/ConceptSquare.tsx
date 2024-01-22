@@ -14,7 +14,7 @@ export const ConceptSquare: React.FC<{
   const parkingSpace = (
     <div
       className={classNames(
-        "w-16 h-16 border border-dashed shadow-inner",
+        "w-16 h-16 border-2 border-dashed",
         isOdd ? "rounded-r-lg border-l-0" : "rounded-l-lg border-r-0"
       )}
     />

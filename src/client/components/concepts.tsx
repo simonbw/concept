@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
+import { range } from "../../common/utils/arrayUtils";
 import { classNames } from "../utils/classNames";
+import { polarToVec } from "../../common/utils/mathUtils";
 
 export interface ConceptData {
   description: string[];
@@ -534,7 +536,7 @@ export const concepts3: ConceptData[] = [
     description: ["Cold", "Snow / Rain", "Cloud"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-slate-100 to-slate-500">
-        <span className="text-5xl">🌧️</span>
+        <span className="text-5xl drop-shadow-md">🌧️</span>
       </div>
     ),
   },
@@ -542,7 +544,9 @@ export const concepts3: ConceptData[] = [
     description: ["Hot", "Day / Light", "Sun"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-sky-500 to-sky-100">
-        <span className="text-5xl">☀️</span>
+        <span className="text-5xl drop-shadow-[0_0_4px_rgba(255,250,240,0.99)]">
+          ☀️
+        </span>
       </div>
     ),
   },
@@ -558,7 +562,7 @@ export const concepts3: ConceptData[] = [
     description: ["Lightning / Storm", "Electricity", "Anger"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-gray-500 to-purple-800">
-        <span className="text-5xl">🌩️</span>
+        <span className="text-5xl drop-shadow-md">🌩️</span>
       </div>
     ),
   },
@@ -669,6 +673,7 @@ export const concepts3: ConceptData[] = [
   },
   {
     description: ["Fragment", "Multitude", "Cluster"],
+    // TODO: Better icon for this one
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
         <span className="text-5xl">🔢</span>
@@ -864,12 +869,36 @@ export const concepts4: ConceptData[] = [
   },
   {
     description: ["Spiral", "Drunkenness", "Coil"],
-    icon: (
-      <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
-        <PaperGrid />
-        <span className="text-5xl relative">🌀</span>
-      </div>
-    ),
+    // TODO: Redo this with an SVG
+    icon: (() => {
+      const d =
+        "M 50 50" +
+        range(0, 350)
+          .map((i) => {
+            const [x, y] = polarToVec((i * Math.PI) / 64, i * 0.125);
+            return `T ${50 + x},${50 + y}`;
+          })
+          .join(" ");
+      return (
+        <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+          <PaperGrid />
+          <svg className="w-full h-full relative" viewBox="0 0 100 100">
+            <path
+              d={d}
+              className="stroke-blue-600 fill-none"
+              strokeLinecap="round"
+              strokeWidth={12}
+            />
+            <path
+              d={d}
+              className="stroke-blue-500 fill-none"
+              strokeLinecap="round"
+              strokeWidth={6}
+            />
+          </svg>
+        </div>
+      );
+    })(),
   },
   {
     description: ["Wavy", "Ripple", "Hair"],

@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import autoprefixer from "autoprefixer";
 import esbuild from "esbuild";
 import postcssPlugin from "esbuild-style-plugin";
@@ -66,7 +69,7 @@ if (isDev) {
   const { host, port } = await context
     .serve({
       servedir: "dist/client",
-      port: process.env.ES_BUILD_DEV_PORT || 3001,
+      port: Number(process.env.ES_BUILD_DEV_PORT || 3001),
     })
     .catch((error) => {
       console.error(`Build error: ${error}`);

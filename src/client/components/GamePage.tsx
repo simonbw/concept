@@ -12,16 +12,17 @@ export const GamePage: React.FC = () => {
   return (
     <div className="p-8">
       <Transition
+        unmount={false}
         show
         appear
         enter="transition duration-500"
         enterFrom="scale-y-0"
         enterTo="scale-y-100"
-        leave="transition duration-500"
-        leaveFrom="scale-y-100"
-        leaveTo="scale-y-0"
+        // leave="transition duration-500"
+        // leaveFrom="scale-y-100"
+        // leaveTo="scale-y-0"
       >
-        <h1 className="text-6xl font-black uppercase tracking-[0.4em] text-center">
+        <h1 className="text-7xl font-black uppercase tracking-[0.4em] text-center p-4">
           Concept
         </h1>
       </Transition>

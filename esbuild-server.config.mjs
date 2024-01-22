@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import esbuild from "esbuild";
 
 const isDev = process.argv.some((arg) => arg == "--dev");
