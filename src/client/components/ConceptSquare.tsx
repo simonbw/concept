@@ -1,7 +1,7 @@
 import { Transition } from "@headlessui/react";
 import React from "react";
 import { classNames } from "../utils/classNames";
-import { ConceptData } from "./concepts";
+import { ConceptData } from "../concepts/concepts";
 
 export const ConceptSquare: React.FC<{
   concept: ConceptData;
@@ -15,7 +15,7 @@ export const ConceptSquare: React.FC<{
     <div
       className={classNames(
         "w-16 h-16 border-2 border-dashed border-slate-300 dark:border-slate-700",
-        isOdd ? "rounded-r-lg border-l-0" : "rounded-l-lg border-r-0"
+        isOdd ? "rounded-r-lg border-l-0 mr-4" : "rounded-l-lg border-r-0 ml-4"
       )}
     />
   );

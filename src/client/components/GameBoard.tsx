@@ -1,12 +1,13 @@
 import React from "react";
 import { ConceptSquare } from "./ConceptSquare";
 import {
+  conceptColumns,
   concepts1,
   concepts2,
   concepts3,
-  concepts4,
-  concepts5,
-} from "./concepts";
+} from "../concepts/concepts";
+import { geometryConcepts } from "../concepts/geometryConcepts";
+import { colorConcepts } from "../concepts/colorConcepts";
 import { CardStack } from "./CardStack";
 
 const columnClassName = "grid justify-between grid-cols-2 w-fit";
@@ -21,69 +22,32 @@ function odds(_: unknown, i: number) {
 
 export const GameBoard: React.FC = () => {
   return (
-    <div className="grid grid-rows-[repeat(14,minmax(0,1fr))] grid-flow-col justify-center items-start gap-x-4 gap-y-0">
-      {concepts1.filter(evens).map((concept, i) => (
-        <ConceptSquare
-          key={`1-${i * 2}`}
-          concept={concept}
-          orientation={"right"}
-        />
-      ))}
-      {concepts1.filter(odds).map((concept, i) => (
-        <ConceptSquare
-          key={`1-${i * 2 + 1}`}
-          concept={concept}
-          orientation={"left"}
-        />
-      ))}
-      {concepts2.filter(evens).map((concept, i) => (
-        <ConceptSquare
-          key={`2-${i * 2}`}
-          concept={concept}
-          orientation={"right"}
-        />
-      ))}
-      {concepts2.filter(odds).map((concept, i) => (
-        <ConceptSquare
-          key={`2-${i * 2 + 1}`}
-          concept={concept}
-          orientation={"left"}
-        />
-      ))}
-      {concepts3.filter(evens).map((concept, i) => (
-        <ConceptSquare
-          key={`3-${i * 2}`}
-          concept={concept}
-          orientation={"right"}
-        />
-      ))}
+    <div className="grid grid-rows-[repeat(14,minmax(0,1fr))] grid-flow-col justify-center items-start gap-y-0">
+      {conceptColumns
+        .slice(0, 5)
+        .map((column, columnIndex) =>
+          column.map((concept, rowIndex) => (
+            <ConceptSquare
+              key={`${columnIndex}-${rowIndex * 2}`}
+              concept={concept}
+              orientation={columnIndex % 2 == 0 ? "right" : "left"}
+            />
+          ))
+        )}
       <div className="row-span-3 col-span-2 relative">
         <CardStack />
       </div>
-      {concepts3.filter(odds).map((concept, i) => (
-        <ConceptSquare
-          key={`3-${i * 2 + 1}`}
-          concept={concept}
-          orientation={"left"}
-        />
-      ))}
-      {concepts4.filter(evens).map((concept, i) => (
-        <ConceptSquare
-          key={`4-${i * 2}`}
-          concept={concept}
-          orientation={"right"}
-        />
-      ))}
-      {concepts4.filter(odds).map((concept, i) => (
-        <ConceptSquare
-          key={`4-${i * 2 + 1}`}
-          concept={concept}
-          orientation={"left"}
-        />
-      ))}
-      {concepts5.map((concept, i) => (
-        <ConceptSquare key={`5-${i}`} concept={concept} orientation={"right"} />
-      ))}
+      {conceptColumns
+        .slice(5, 9)
+        .map((column, columnIndex) =>
+          column.map((concept, rowIndex) => (
+            <ConceptSquare
+              key={`${columnIndex + 5}-${rowIndex * 2}`}
+              concept={concept}
+              orientation={columnIndex % 2 == 1 ? "right" : "left"}
+            />
+          ))
+        )}
 
       {/* <div className="flex items-end justify-center grow row-span-3">
         <a
