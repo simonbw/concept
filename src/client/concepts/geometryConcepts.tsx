@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react";
 import { range } from "../../common/utils/arrayUtils";
 import { lerp, polarToVec } from "../../common/utils/mathUtils";
 import { ConceptData } from "./concepts";
+import { classNames } from "../utils/classNames";
 
 const TwoDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -23,20 +24,22 @@ const twoDConcepts: ConceptData[] = [
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
           <line
-            x1={10}
-            y1={90}
-            x2={90}
-            y2={10}
+            x1={15}
+            y1={85}
+            x2={85}
+            y2={15}
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
+            strokeLinecap="square"
           />
           <line
-            x1={10}
-            y1={90}
-            x2={90}
-            y2={10}
+            x1={15}
+            y1={85}
+            x2={85}
+            y2={15}
             className="stroke-blue-500 fill-none"
             strokeWidth={6}
+            strokeLinecap="square"
           />
         </svg>
       </TwoDConceptIcon>
@@ -52,12 +55,14 @@ const twoDConcepts: ConceptData[] = [
             fill="none"
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
+            strokeLinecap="square"
           />
           <path
             d="M 15 90, Q 10 10 90 15"
             fill="none"
             className="stroke-blue-500 fill-none"
             strokeWidth={6}
+            strokeLinecap="square"
           />
         </svg>
       </TwoDConceptIcon>
@@ -75,7 +80,7 @@ const twoDConcepts: ConceptData[] = [
             y2={50}
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
-            strokeLinecap="round"
+            strokeLinecap="square"
           />
           <line
             x1={50}
@@ -84,7 +89,7 @@ const twoDConcepts: ConceptData[] = [
             y2={90}
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
-            strokeLinecap="round"
+            strokeLinecap="square"
           />
           <line
             x1={10}
@@ -93,7 +98,7 @@ const twoDConcepts: ConceptData[] = [
             y2={50}
             className="stroke-blue-500 fill-none"
             strokeWidth={6}
-            strokeLinecap="round"
+            strokeLinecap="square"
           />
           <line
             x1={50}
@@ -102,7 +107,7 @@ const twoDConcepts: ConceptData[] = [
             y2={90}
             className="stroke-blue-500 fill-none"
             strokeWidth={6}
-            strokeLinecap="round"
+            strokeLinecap="square"
           />
         </svg>
       </TwoDConceptIcon>
@@ -116,13 +121,13 @@ const twoDConcepts: ConceptData[] = [
           <path
             d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
             className="stroke-blue-600 fill-none"
-            strokeLinecap="round"
+            strokeLinecap="square"
             strokeWidth={12}
           />
           <path
             d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
             className="stroke-blue-500 fill-none"
-            strokeLinecap="round"
+            strokeLinecap="square"
             strokeWidth={6}
           />
         </svg>
@@ -133,12 +138,19 @@ const twoDConcepts: ConceptData[] = [
     description: ["Spiral", "Drunkenness", "Coil"],
     // TODO: Redo this with an SVG
     icon: (() => {
+      const layers = 2.9;
+      const resolution = 100;
+      const maxRadius = 43;
+      const [cx, cy] = [53, 53];
       const d =
-        "M 50 50" +
-        range(0, 350)
+        `M ${cx},${cy} ` +
+        range(0, resolution)
           .map((i) => {
-            const [x, y] = polarToVec((i * Math.PI) / 64, i * 0.125);
-            return `T ${50 + x},${50 + y}`;
+            const t = i / resolution;
+            const theta = t * layers * Math.PI * 2;
+            const r = t * maxRadius;
+            const [x, y] = polarToVec(theta, r);
+            return `T ${cx + x},${cy + y}`;
           })
           .join(" ");
       return (
@@ -242,7 +254,14 @@ const twoDConcepts: ConceptData[] = [
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
           <polygon
-            points="50,20 80,80 20,80"
+            points={range(0, 9)
+              .map((i) => {
+                const r = i % 2 === 0 ? 42 : 18;
+                const theta = (i / 10) * Math.PI * 2 - Math.PI / 2;
+                const [x, y] = polarToVec(theta, r);
+                return `${50 + x},${52 + y}`;
+              })
+              .join(" ")}
             className="stroke-blue-600 fill-blue-500"
             strokeWidth={4}
           />
@@ -323,11 +342,34 @@ const threeDConcepts: ConceptData[] = [
     description: ["Flat"],
     icon: (
       <ThreeDConceptIcon>
-        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+        <svg
+          className={classNames(
+            "w-full h-full relative",
+            "[--gradientHighlightColor:theme(colors.blue.100)]",
+            "[--gradientLightColor:theme(colors.blue.300)]",
+            "[--gradientDarkColor:theme(colors.blue.700)]"
+          )}
+          viewBox="0 0 100 100"
+        >
+          <linearGradient
+            className={classNames(
+              "[--gradientLightColor:theme(colors.blue.300)]",
+              "[--gradientDarkColor:theme(colors.blue.600)]"
+            )}
+            id="flatGradient"
+            x1="20%"
+            y1="0%"
+            x2="80%"
+            y2="100%"
+          >
+            <stop offset="20%" stopColor="var(--gradientLightColor)" />
+            <stop offset="100%" stopColor="var(--gradientDarkColor)" />
+          </linearGradient>
           <polygon
-            points="30,60 70,60 80,80 20,80"
-            className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            points="30,60 70,60 88,85 12,85"
+            className="stroke-blue-600"
+            fill="url(#flatGradient)"
+            strokeWidth={2}
           />
         </svg>
       </ThreeDConceptIcon>
@@ -341,19 +383,19 @@ const threeDConcepts: ConceptData[] = [
           <polygon
             points="20,30 50,40 50,90 20,80"
             className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
           <polygon
             points="20,30 50,40 80,30 50,20"
             className="stroke-blue-600 fill-blue-400"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
           <polygon
             points="50,40 80,30 80,80 50,90"
             className="stroke-blue-600 fill-blue-600"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
         </svg>
@@ -364,14 +406,22 @@ const threeDConcepts: ConceptData[] = [
     description: ["Sphere"],
     icon: (
       <ThreeDConceptIcon>
-        <svg
-          className="w-full h-full relative text-blue-700"
-          viewBox="0 0 100 100"
-        >
+        <svg className="w-full h-full relative" viewBox="0 0 100 100">
           <defs>
-            <radialGradient id="sphereGradient" cx="25%" cy="25%" r="100%">
-              <stop offset="0%" stopColor="white" />
-              <stop offset="70%" stopColor="currentColor" />
+            <radialGradient
+              className={classNames(
+                "[--gradientHighlightColor:theme(colors.blue.100)]",
+                "[--gradientLightColor:theme(colors.blue.300)]",
+                "[--gradientDarkColor:theme(colors.blue.700)]"
+              )}
+              id="sphereGradient"
+              cx="25%"
+              cy="25%"
+              r="100%"
+            >
+              <stop offset="0%" stopColor="var(--gradientHighlightColor)" />
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="70%" stopColor="var(--gradientDarkColor)" />
             </radialGradient>
           </defs>
           <circle
@@ -380,7 +430,7 @@ const threeDConcepts: ConceptData[] = [
             r={30}
             className="stroke-blue-700"
             fill="url(#sphereGradient)"
-            strokeWidth={4}
+            strokeWidth={2}
           />
         </svg>
       </ThreeDConceptIcon>
@@ -393,14 +443,14 @@ const threeDConcepts: ConceptData[] = [
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
           <polygon
             points="50,20 50,90 20,80"
-            className="stroke-blue-600 fill-blue-400"
-            strokeWidth={4}
+            className="stroke-blue-700 fill-blue-400"
+            strokeWidth={2}
             strokeLinejoin="round"
           />
           <polygon
             points="50,20 80,80 50,90"
-            className="stroke-blue-600 fill-blue-600"
-            strokeWidth={4}
+            className="stroke-blue-700 fill-blue-600"
+            strokeWidth={2}
             strokeLinejoin="round"
           />
         </svg>
@@ -417,30 +467,37 @@ const threeDConcepts: ConceptData[] = [
         >
           <defs>
             <linearGradient
+              className={classNames(
+                "[--gradientHighlightColor:theme(colors.blue.200)]",
+                "[--gradientLightColor:theme(colors.blue.300)]",
+                "[--gradientDarkColor:theme(colors.blue.700)]"
+              )}
               id="cylinderGradient"
               x1="0%"
               y1="50%"
               x2="100%"
               y2="50%"
             >
-              <stop offset="0%" stopColor="white" />
-              <stop offset="70%" stopColor="currentColor" />
+              <stop offset="0%" stopColor="var(--gradientLightColor)" />
+              <stop offset="10%" stopColor="var(--gradientHighlightColor)" />
+              <stop offset="20%" stopColor="var(--gradientLightColor)" />
+              <stop offset="70%" stopColor="var(--gradientDarkColor)" />
             </linearGradient>
           </defs>
           <path
-            d="M 20,20 L 80,20 L 80,80 Q 50,92 20,80 Z"
+            d="M 20,20 L 80,20 L 80,80 Q 50,96 20,80 Z"
             className="stroke-blue-600"
             fill="url(#cylinderGradient)"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
           <ellipse
             cx={50}
             cy={20}
             rx={30}
-            ry={10}
+            ry={8}
             className="stroke-blue-600 fill-blue-400"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
         </svg>
@@ -458,20 +515,28 @@ const threeDConcepts: ConceptData[] = [
           <defs>
             <linearGradient
               id="coneGradient"
+              className={classNames(
+                "[--gradientHighlightColor:theme(colors.blue.200)]",
+                "[--gradientLightColor:theme(colors.blue.300)]",
+                "[--gradientDarkColor:theme(colors.blue.700)]"
+              )}
               x1="0%"
-              y1="25%"
+              y1="0%"
               x2="100%"
-              y2="75%"
+              y2="32%"
             >
-              <stop offset="0%" stopColor="white" />
-              <stop offset="100%" stopColor="currentColor" />
+              <stop offset="0%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="42%" stopColor="var(--gradientLightColor)" />
+              <stop offset="50%" stopColor="var(--gradientHighlightColor)" />
+              <stop offset="58%" stopColor="var(--gradientLightColor)" />
+              <stop offset="100%" stopColor="var(--gradientDarkColor)" />
             </linearGradient>
           </defs>
           <path
             d="M 50,20 L 80,80 Q 50,92 20,80 Z"
             className="stroke-blue-600"
             fill="url(#coneGradient)"
-            strokeWidth={4}
+            strokeWidth={2}
             strokeLinejoin="round"
           />
         </svg>
@@ -488,38 +553,55 @@ const threeDConcepts: ConceptData[] = [
   },
 ];
 
+const SpatialConceptIcon: React.FC<
+  PropsWithChildren<{ className?: string }>
+> = ({ children, className }) => {
+  return (
+    <div
+      className={classNames(
+        "concept-icon bg-gradient-to-b from-slate-100 to-green-600 relative",
+        className
+      )}
+    >
+      <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
+        {Array.from({ length: 12 * 12 }).map((_, i) => (
+          <span className="border-[0.5px] border-gray-600/25" />
+        ))}
+      </div>
+      {children}
+    </div>
+  );
+};
+
 const spatialConcepts: ConceptData[] = [
   {
     description: ["Big", "High"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full gap-1">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="flex justify-center items-center w-full gap-1">
         <span className="w-[35%] shrink-0 flex items-center justify-center">
           <span className="relative text-5xl inline-block rotate-90">⇤</span>
         </span>
         <span className="relative w-[35%] h-[75%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Small", "Low"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="flex justify-center items-center w-full">
         <div className="flex items-end justify-center gap-2 h-[75%]">
           <span className="w-[35%] shrink-0 flex items-center justify-center">
             <span className="relative text-5xl inline-block -rotate-90">⇤</span>
           </span>
           <span className="relative w-[45%] h-[20%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Fat", "Large", "Long"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="flex justify-center items-center w-full">
         <div className="flex flex-col items-center justify-center h-[75%] gap-1">
           <span className="shrink-0 h-[50%] flex items-center justify-center">
             <span className="relative text-3xl flex items-center justify-center tracking-[-0.2em]">
@@ -529,14 +611,13 @@ const spatialConcepts: ConceptData[] = [
           </span>
           <span className="relative w-[100%] h-[50%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Thin / Fine", "Narrow", "Short"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative flex justify-center items-center w-full">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="flex justify-center items-center w-full">
         <div className="flex flex-col items-center justify-center h-[75%] gap-1">
           <span className="shrink-0 h-[50%] flex items-center justify-center">
             <span className="relative text-3xl flex items-center justify-center tracking-[-0.2em]">
@@ -546,14 +627,13 @@ const spatialConcepts: ConceptData[] = [
           </span>
           <span className="relative w-[20%] h-[50%] shrink-0 bg-yellow-400 border-2 border-amber-500 outline-1 outline-black/50 outline" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["High", "Climb", "Above"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon>
         <div className="relative flex flex-col h-full w-full items-center justify-end">
           <span
             className="text-6xl text-yellow-400"
@@ -561,16 +641,15 @@ const spatialConcepts: ConceptData[] = [
           >
             ↥
           </span>
-          <span className="h-[20%] w-full bg-black" />
+          <span className="h-[20%] w-full shrink-0 bg-black" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Low", "Descend", "Below"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="">
         <div className="relative flex flex-col h-full w-full items-center justify-end rotate-180">
           <span
             className="text-6xl text-yellow-400"
@@ -578,16 +657,15 @@ const spatialConcepts: ConceptData[] = [
           >
             ↥
           </span>
-          <span className="h-[20%] w-full bg-black" />
+          <span className="h-[20%] w-full shrink-0 bg-black" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Left", "Beginning", "Before / Past"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="">
         <div className="relative flex flex-col h-full w-full items-center justify-end -rotate-90">
           <span
             className="text-6xl text-yellow-400"
@@ -595,16 +673,15 @@ const spatialConcepts: ConceptData[] = [
           >
             ↥
           </span>
-          <span className="h-[20%] w-full bg-black" />
+          <span className="h-[20%] w-full shrink-0 bg-black" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Right", "End", "After / Future"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon className="">
         <div className="relative flex flex-col h-full w-full items-center justify-end rotate-90">
           <span
             className="text-6xl text-yellow-400"
@@ -612,27 +689,25 @@ const spatialConcepts: ConceptData[] = [
           >
             ↥
           </span>
-          <span className="h-[20%] w-full bg-black" />
+          <span className="h-[20%] w-full shrink-0 bg-black" />
         </div>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Turn", "Around", "Cycle / Repetition"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon>
         <span className="text-5xl relative">🔄</span>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
   {
     description: ["Use / Action", "Do / Verb", "Button"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
-        <TwoDConceptIcon />
+      <SpatialConceptIcon>
         <span className="text-5xl relative">🔘</span>
-      </div>
+      </SpatialConceptIcon>
     ),
   },
 ];

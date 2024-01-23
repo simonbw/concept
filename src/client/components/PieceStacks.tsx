@@ -13,7 +13,7 @@ import { GamePieceIcon } from "./GamePieceIcon";
 
 export const PieceStacks: React.FC = () => {
   return (
-    <div className="flex gap-6 justify-center my-8">
+    <div className="flex gap-6 justify-center mb-4">
       {pieceColorSchema.options.map((color) => (
         <div key={color} className="flex gap-2 items-center">
           {pieceSizeSchema.options
@@ -30,7 +30,7 @@ export const PieceStacks: React.FC = () => {
         )}
         onClick={() => trpcClient.gameState.reset.mutate()}
       >
-        Clear Pieces
+        Reset Pieces
       </button>
     </div>
   );

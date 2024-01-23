@@ -138,8 +138,8 @@ export const concepts1: ConceptData[] = [
     description: ["Idea", "Intelligence", "Concept"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-indigo-700 to-indigo-800">
-        <span className="absolute text-7xl opacity-30">🧠</span>
-        <span className="absolute text-5xl drop-shadow-[0_0px_6px_rgba(255,255,255,0.8)]">
+        <span className="absolute text-[5.5rem] opacity-60 -top-4">👤</span>
+        <span className="absolute top-1 text-[2.75rem] leading-none drop-shadow-[0_0px_6px_rgba(255,255,255,0.8)]">
           <span>💡</span>
         </span>
       </div>
@@ -281,7 +281,7 @@ export const concepts2: ConceptData[] = [
     description: ["Baby", "Child", "Young", "New"],
     icon: (
       <div className="concept-icon bg-gradient-to-br from-orange-300/50 to-orange-200/30">
-        <span className="text-3xl">👶🧒</span>
+        <span className="text-3xl drop-shadow-sm">👶🧒</span>
       </div>
     ),
   },
@@ -289,7 +289,7 @@ export const concepts2: ConceptData[] = [
     description: ["Adult", "Elderly", "Old", "Past"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-gray-200 to-gray-400">
-        <span className="text-3xl">👴👵</span>
+        <span className="text-3xl drop-shadow-sm">👴👵</span>
       </div>
     ),
   },
@@ -320,18 +320,18 @@ export const concepts2: ConceptData[] = [
     ),
   },
   {
-    description: ["Slow", "Slow Motion"],
+    description: ["Slow", "Slow Motion", "Turtle"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-black to-black">
-        <span className="text-5xl">🐢</span>
+        <span className="text-5xl drop-shadow-sm">🐢</span>
       </div>
     ),
   },
   {
-    description: ["Fast", "Race"],
+    description: ["Fast", "Race", "Rabbit"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-black to-black">
-        <span className="text-5xl">🐇</span>
+        <span className="text-5xl drop-shadow-sm">🐇</span>
       </div>
     ),
   },
@@ -339,7 +339,7 @@ export const concepts2: ConceptData[] = [
     description: ["Defense", "Protection", "Wall"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-sky-800 to-sky-600">
-        <span className="text-5xl">🛡️</span>
+        <span className="text-5xl drop-shadow-sm">🛡️</span>
       </div>
     ),
   },
@@ -347,7 +347,7 @@ export const concepts2: ConceptData[] = [
     description: ["Attack", "Conflict", "Combat", "Weapon"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-black to-black">
-        <span className="text-5xl">⚔️</span>
+        <span className="text-5xl drop-shadow-sm">⚔️</span>
       </div>
     ),
   },
@@ -355,7 +355,7 @@ export const concepts2: ConceptData[] = [
     description: ["Life", "Heart", "Love"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-fuchsia-200 to-pink-100">
-        <span className="text-5xl">❤️</span>
+        <span className="text-5xl drop-shadow-sm">❤️</span>
       </div>
     ),
   },
@@ -363,7 +363,7 @@ export const concepts2: ConceptData[] = [
     description: ["Death", "Bad", "Illness"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-red-800 to-black">
-        <span className="text-5xl">💀</span>
+        <span className="text-5xl drop-shadow-sm">💀</span>
       </div>
     ),
   },
@@ -371,7 +371,7 @@ export const concepts2: ConceptData[] = [
     description: ["Happy", "Positive"],
     icon: (
       <div className="concept-icon bg-gradient-to-br from-sky-500 to-white">
-        <span className="text-5xl">😀</span>
+        <span className="text-5xl drop-shadow-sm">😀</span>
       </div>
     ),
   },
@@ -379,7 +379,7 @@ export const concepts2: ConceptData[] = [
     description: ["Sad", "Negative"],
     icon: (
       <div className="concept-icon bg-gradient-to-br from-sky-600 to-cyan-900">
-        <span className="text-5xl">😥</span>
+        <span className="text-5xl drop-shadow-sm">😥</span>
       </div>
     ),
   },
@@ -387,7 +387,7 @@ export const concepts2: ConceptData[] = [
     description: ["Electronic", "Computing"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-green-700 to-green-600">
-        <span className="text-5xl">💻</span>
+        <span className="text-5xl drop-shadow-sm">💻</span>
       </div>
     ),
   },
@@ -395,7 +395,7 @@ export const concepts2: ConceptData[] = [
     description: ["Mechanical", "Industrial"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-slate-700 to-slate-600">
-        <span className="text-3xl">⚙️🏭</span>
+        <span className="text-3xl drop-shadow-sm">⚙️🏭</span>
       </div>
     ),
   },
@@ -403,7 +403,7 @@ export const concepts2: ConceptData[] = [
     description: ["Money", "Rich", "Expensive"],
     icon: (
       <div className="concept-icon bg-gradient-to-r from-red-600 to-red-700">
-        <span className="absolute top-2 left-2 text-5xl drop-shadow-md -rotate-45">
+        <span className="absolute top-2 left-2 text-5xl drop-shadow-sm -rotate-45">
           🧧
         </span>
         <span className="absolute bottom-0 right-0 text-[3rem] drop-shadow-md rotate-12">
@@ -666,7 +666,7 @@ export const concepts3: ConceptData[] = [
     description: ["Cut / Break", "Separation", "Half"],
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <span className="text-5xl">✂️</span>
+        <span className="text-5xl drop-shadow-sm">✂️</span>
       </div>
     ),
   },
@@ -683,7 +683,7 @@ export const concepts3: ConceptData[] = [
     description: ["Part", "Fragment", "Assembly"],
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <span className="text-5xl">🧩</span>
+        <span className="text-5xl drop-shadow-sm">🧩</span>
       </div>
     ),
   },
@@ -691,7 +691,7 @@ export const concepts3: ConceptData[] = [
     description: ["Inside", "Internal"],
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <span className="text-5xl">📥</span>
+        <span className="text-5xl drop-shadow-sm">📥</span>
       </div>
     ),
   },
@@ -699,7 +699,7 @@ export const concepts3: ConceptData[] = [
     description: ["Grill / Wire", "Network", "Grid"],
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <div className="grid grid-cols-6 grid-rows-6 w-full h-full">
+        <div className="grid grid-cols-6 grid-rows-6 w-full h-full drop-shadow-sm">
           {Array.from({ length: 6 * 6 }).map((_, i) => (
             <span className="border border-gray-600" />
           ))}
