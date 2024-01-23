@@ -21,7 +21,7 @@ export const GamePage: React.FC = () => {
         <span
           className={classNames(
             "transition-transform duration-300",
-            compact ? "-rotate-90" : "rotate-90"
+            compact ? "rotate-90" : "-rotate-90"
           )}
         >
           {"⏵"}
