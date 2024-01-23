@@ -25,7 +25,7 @@ export const GamePieceIcon: React.FC<{
         className={classNames(
           className,
           "cursor-pointer block",
-          "transition overflow-hidden shadow-slate-700/70",
+          "transition overflow-hidden shadow-slate-700/70 dark:shadow-black/80",
           "font-bold flex justify-center items-center text-3xl",
           !dragging && "shadow-sm hover:scale-110",
           dragging && "shadow-xl scale-125",
@@ -38,7 +38,7 @@ export const GamePieceIcon: React.FC<{
           color === "red" && "bg-red-500 text-red-800",
           color === "blue" && "bg-blue-500 text-blue-800",
           color === "yellow" && "bg-yellow-500 text-yellow-800",
-          color === "black" && "bg-black text-gray-500"
+          color === "black" && "bg-black text-slate-500"
         )}
       >
         {size === "large" && color === "green" && "?"}

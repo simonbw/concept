@@ -23,7 +23,13 @@ export const PieceStacks: React.FC = () => {
             ))}
         </div>
       ))}
-      <button onClick={() => trpcClient.gameState.reset.mutate()}>
+
+      <button
+        className={classNames(
+          "dark:text-slate-300/80 dark:hover:text-slate-300 px-4 py-1 rounded-lg hover:bg-slate-400/20 active:bg-slate-400/30"
+        )}
+        onClick={() => trpcClient.gameState.reset.mutate()}
+      >
         Clear Pieces
       </button>
     </div>

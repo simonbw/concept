@@ -7,57 +7,92 @@ import {
   concepts4,
   concepts5,
 } from "./concepts";
+import { CardStack } from "./CardStack";
 
 const columnClassName = "grid justify-between grid-cols-2 w-fit";
 
+function evens(_: unknown, i: number) {
+  return i % 2 == 0;
+}
+
+function odds(_: unknown, i: number) {
+  return !evens(_, i);
+}
+
 export const GameBoard: React.FC = () => {
   return (
-    <div className="grid grid-rows-[repeat(14,minmax(0,1fr))] grid-flow-col justify-center">
-      {concepts1.map((concept, i) => (
+    <div className="grid grid-rows-[repeat(14,minmax(0,1fr))] grid-flow-col justify-center items-start gap-x-4 gap-y-0">
+      {concepts1.filter(evens).map((concept, i) => (
         <ConceptSquare
-          key={`1-${i}`}
+          key={`1-${i * 2}`}
           concept={concept}
-          orientation={i % 2 == 1 ? "left" : "right"}
+          orientation={"right"}
         />
       ))}
-      {concepts2.map((concept, i) => (
+      {concepts1.filter(odds).map((concept, i) => (
         <ConceptSquare
-          key={`2-${i}`}
+          key={`1-${i * 2 + 1}`}
           concept={concept}
-          orientation={i % 2 == 1 ? "left" : "right"}
+          orientation={"left"}
         />
       ))}
-      {concepts3.map((concept, i) => (
+      {concepts2.filter(evens).map((concept, i) => (
         <ConceptSquare
-          key={`3-${i}`}
+          key={`2-${i * 2}`}
           concept={concept}
-          orientation={i % 2 == 1 ? "left" : "right"}
+          orientation={"right"}
+        />
+      ))}
+      {concepts2.filter(odds).map((concept, i) => (
+        <ConceptSquare
+          key={`2-${i * 2 + 1}`}
+          concept={concept}
+          orientation={"left"}
+        />
+      ))}
+      {concepts3.filter(evens).map((concept, i) => (
+        <ConceptSquare
+          key={`3-${i * 2}`}
+          concept={concept}
+          orientation={"right"}
         />
       ))}
       <div className="row-span-3 col-span-2 relative">
         <CardStack />
       </div>
-      {concepts4.map((concept, i) => (
+      {concepts3.filter(odds).map((concept, i) => (
         <ConceptSquare
-          key={`4-${i}`}
+          key={`3-${i * 2 + 1}`}
           concept={concept}
-          orientation={i % 2 == 1 ? "left" : "right"}
+          orientation={"left"}
+        />
+      ))}
+      {concepts4.filter(evens).map((concept, i) => (
+        <ConceptSquare
+          key={`4-${i * 2}`}
+          concept={concept}
+          orientation={"right"}
+        />
+      ))}
+      {concepts4.filter(odds).map((concept, i) => (
+        <ConceptSquare
+          key={`4-${i * 2 + 1}`}
+          concept={concept}
+          orientation={"left"}
         />
       ))}
       {concepts5.map((concept, i) => (
         <ConceptSquare key={`5-${i}`} concept={concept} orientation={"right"} />
       ))}
 
-      <div></div>
-      <div></div>
-      <div className="flex items-end justify-center grow row-span-3">
+      {/* <div className="flex items-end justify-center grow row-span-3">
         <a
           href="https://github.com/simonbw/concept"
           className="w-16 opacity-50 hover:opacity-90 active:opacity-100"
         >
           <GithubLogo />
         </a>
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -73,15 +108,3 @@ const GithubLogo: React.FC = () => (
     />
   </svg>
 );
-
-const CardStack: React.FC = () => {
-  return (
-    <div className="relative rounded-xl break-all hyphens-auto aspect-[2/3] h-full">
-      <div className="absolute inset-2 rounded-xl flex items-center justify-center shadow select-none">
-        <div className="absolute inset-3 border-4 border-double rounded-xl flex items-center justify-center">
-          <img className="w-40" src="/static/images/favicon.png" />
-        </div>
-      </div>
-    </div>
-  );
-};

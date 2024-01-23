@@ -14,7 +14,7 @@ export const ConceptSquare: React.FC<{
   const parkingSpace = (
     <div
       className={classNames(
-        "w-16 h-16 border-2 border-dashed",
+        "w-16 h-16 border-2 border-dashed border-slate-300 dark:border-slate-700",
         isOdd ? "rounded-r-lg border-l-0" : "rounded-l-lg border-r-0"
       )}
     />
@@ -38,7 +38,10 @@ export const ConceptSquare: React.FC<{
           onMouseEnter={() => setTooltipOpen(true)}
           onMouseLeave={() => setTooltipOpen(false)}
           className={classNames(
-            "w-[4.5rem] h-[4.5rem] bg-slate-100 rounded-lg overflow-hidden border border-slate-300 relative flex items-center justify-center"
+            "w-[4.5rem] h-[4.5rem]",
+            "relative flex items-center justify-center",
+            "bg-slate-100 dark:bg-slate-80 border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-100",
+            "rounded-lg overflow-hidden border"
           )}
         >
           {concept.icon}
@@ -67,7 +70,8 @@ const ConceptTooltip: React.FC<{
     >
       <div
         className={classNames(
-          "shadow-slate-800/50 shadow-lg p-4 rounded bg-slate-100 marker:text-slate-800",
+          " shadow-lg p-4 rounded marker:text-slate-800",
+          "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100 shadow-slate-800/50 dark:shadow-black",
           "absolute pointer-events-none top-0 mx-2 z-20",
           isOdd ? "left-full text-left" : "right-full text-right"
         )}
