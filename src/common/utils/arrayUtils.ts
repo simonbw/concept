@@ -45,3 +45,14 @@ export function range(start: number, end: number): number[] {
 export function arrayEquals<T>(a: T[], b: T[]): boolean {
   return a.length === b.length && a.every((v, i) => v === b[i]);
 }
+export function findDuplicates<T>(items: T[]): T[] {
+  const duplicates = new Set<T>();
+  const seen = new Set<T>();
+  for (const item of items) {
+    if (seen.has(item)) {
+      duplicates.add(item);
+    }
+    seen.add(item);
+  }
+  return [...duplicates];
+}

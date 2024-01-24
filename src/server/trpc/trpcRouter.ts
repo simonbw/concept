@@ -1,3 +1,4 @@
+import { cardsTrpcRouter } from "./cardsRouter";
 import { esbuildTrpcRouter } from "./esbuildTrpc";
 import { gameStateTrpcRouter } from "./gameStateTrpc";
 import { piecesTrpcRouter } from "./piecesTrpc";
@@ -10,6 +11,7 @@ export const trpcRouter = trpc.router({
   esbuild: esbuildTrpcRouter,
   gameState: gameStateTrpcRouter,
   pieces: piecesTrpcRouter,
+  cards: cardsTrpcRouter,
 });
 
 export type TrpcRouter = typeof trpcRouter;

@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { colorConcepts } from "./colorConcepts";
 import { geometryConcepts } from "./geometryConcepts";
+import { range } from "../../common/utils/arrayUtils";
 
 export interface ConceptData {
   description: string[];
@@ -224,7 +225,19 @@ export const concepts1: ConceptData[] = [
   {
     description: ["Tool", "Construction"],
     icon: (
-      <div className="concept-icon bg-gradient-to-tr from-orange-500 to-yellow-100">
+      <div className="concept-icon bg-gradient-to-tr from-yellow-500 to-yellow-100">
+        <svg className="absolute inset-0" viewBox="0 0 100 100">
+          {range(0, 8).map((i) => (
+            <line
+              className="stroke-black stroke-[8]"
+              x1={0}
+              y1={i * 25}
+              x2={i * 20}
+              y2={0}
+              strokeLinecap="square"
+            />
+          ))}
+        </svg>
         <span className="text-5xl drop-shadow-sm">🔨</span>
       </div>
     ),
@@ -666,7 +679,8 @@ export const concepts3: ConceptData[] = [
     description: ["Cut / Break", "Separation", "Half"],
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <span className="text-5xl drop-shadow-sm">✂️</span>
+        <span className="absolute h-full w-0 border-x border-dashed" />
+        <span className="absolute text-5xl drop-shadow-sm">✂️</span>
       </div>
     ),
   },
@@ -675,7 +689,46 @@ export const concepts3: ConceptData[] = [
     // TODO: Better icon for this one
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
-        <span className="text-5xl">🔢</span>
+        <svg className="absolute inset-0 drop-shadow-sm" viewBox="0 0 100 100">
+          {range(0, 7).map((i) =>
+            range(0, 7).map(
+              (j) =>
+                i - j <= 0 && (
+                  <rect
+                    key={`${i}-${j}`}
+                    rx={4}
+                    ry={4}
+                    x={i * 16 - 4}
+                    y={j * 16}
+                    width={15}
+                    height={15}
+                    strokeWidth={2}
+                    className="fill-white stroke-red-500"
+                  />
+                )
+            )
+          )}
+          <rect
+            rx={4}
+            ry={4}
+            x={60}
+            y={8}
+            width={18}
+            height={18}
+            strokeWidth={2}
+            className="fill-white stroke-red-500"
+          />
+          <rect
+            rx={4}
+            ry={4}
+            x={80}
+            y={34}
+            width={12}
+            height={12}
+            strokeWidth={2}
+            className="fill-white stroke-red-500"
+          />
+        </svg>
       </div>
     ),
   },
@@ -701,7 +754,7 @@ export const concepts3: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
         <div className="grid grid-cols-6 grid-rows-6 w-full h-full drop-shadow-sm">
           {Array.from({ length: 6 * 6 }).map((_, i) => (
-            <span className="border border-gray-600" />
+            <span key={i} className="border border-gray-600" />
           ))}
         </div>
       </div>

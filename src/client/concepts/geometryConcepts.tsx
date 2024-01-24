@@ -9,7 +9,7 @@ const TwoDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
     <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
       <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
         {Array.from({ length: 12 * 12 }).map((_, i) => (
-          <span className="border-[0.5px] border-gray-600/25" />
+          <span key={i} className="border-[0.5px] border-gray-600/25" />
         ))}
       </div>
       {children}
@@ -291,15 +291,6 @@ const twoDConcepts: ConceptData[] = [
 const ThreeDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="concept-icon bg-gradient-to-b from-sky-400/50 to-slate-100 relative">
-      {/* <div className="absolute inset-0 flex flex-col items-center justify-end bg-gradient-to-b ">
-        <div className="w-full h-[50%]">
-          <div className="grid grid-cols-12 grid-rows-12 w-full h-full">
-            {Array.from({ length: 12 * 12 }).map((_, i) => (
-              <span className="border-[0.5px] border-gray-600/25" />
-            ))}
-          </div>
-        </div>
-      </div> */}
       <svg
         className="absolute top-[50%] left-0 right-0 bottom-0"
         viewBox="0 0 100 100"
@@ -308,6 +299,7 @@ const ThreeDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
           const t = i / 16;
           return (
             <line
+              key={`x${i}`}
               x1={lerp(0, 100, t)}
               x2={lerp(-100, 200, t)}
               y1={0}
@@ -322,6 +314,7 @@ const ThreeDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
           const y = lerp(0, 50, t);
           return (
             <line
+              key={`y${i}`}
               x1={0}
               x2={100}
               y1={y}
@@ -559,13 +552,13 @@ const SpatialConceptIcon: React.FC<
   return (
     <div
       className={classNames(
-        "concept-icon bg-gradient-to-b from-slate-100 to-green-600 relative",
+        "concept-icon bg-gradient-to-b from-slate-100 to-green-600 relative text-black",
         className
       )}
     >
       <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
         {Array.from({ length: 12 * 12 }).map((_, i) => (
-          <span className="border-[0.5px] border-gray-600/25" />
+          <span key={i} className="border-[0.5px] border-gray-600/25" />
         ))}
       </div>
       {children}

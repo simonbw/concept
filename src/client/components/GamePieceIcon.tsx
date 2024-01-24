@@ -38,7 +38,8 @@ export const GamePieceIcon: React.FC<{
           color === "red" && "bg-red-500 text-red-800",
           color === "blue" && "bg-blue-500 text-blue-800",
           color === "yellow" && "bg-yellow-500 text-yellow-800",
-          color === "black" && "bg-black text-slate-500"
+          color === "black" &&
+            "bg-black text-slate-500 dark:border dark:border-slate-500"
         )}
       >
         {size === "large" && color === "green" && "?"}

@@ -7,6 +7,7 @@ const ColorBackground: React.FC = () => {
     <div className="absolute inset-0 grid grid-cols-3 grid-rows-3 bg-gradient-to-br from-brown-600 to-brown-700">
       {Array.from({ length: 3 * 3 }).map((_, i) => (
         <span
+          key={i}
           className={classNames(
             i % 2 === 0 ? "bg-amber-400/40" : "bg-brown-300 / 30"
           )}

@@ -26,6 +26,9 @@ export const gameStateSchema = z.object({
       position: piecePositionSchema,
     })
   ),
+
+  deckSeed: z.number(),
+  cardsDrawn: z.number(),
 });
 
 export type GameState = Readonly<z.infer<typeof gameStateSchema>>;
