@@ -23,6 +23,22 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="lineGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <line
             x1={15}
             y1={85}
@@ -37,7 +53,8 @@ const twoDConcepts: ConceptData[] = [
             y1={85}
             x2={85}
             y2={15}
-            className="stroke-blue-500 fill-none"
+            fill="none"
+            stroke="url(#lineGradient)"
             strokeWidth={6}
             strokeLinecap="square"
           />
@@ -50,6 +67,22 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="arcGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <path
             d="M 15 90, Q 10 10 90 15"
             fill="none"
@@ -60,7 +93,7 @@ const twoDConcepts: ConceptData[] = [
           <path
             d="M 15 90, Q 10 10 90 15"
             fill="none"
-            className="stroke-blue-500 fill-none"
+            stroke="url(#arcGradient)"
             strokeWidth={6}
             strokeLinecap="square"
           />
@@ -73,10 +106,27 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="crossGradient"
+              gradientUnits="userSpaceOnUse"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <line
-            x1={10}
+            x1={15}
             y1={50}
-            x2={90}
+            x2={85}
             y2={50}
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
@@ -84,30 +134,29 @@ const twoDConcepts: ConceptData[] = [
           />
           <line
             x1={50}
-            y1={10}
+            y1={15}
             x2={50}
-            y2={90}
+            y2={85}
             className="stroke-blue-600 fill-none"
             strokeWidth={12}
             strokeLinecap="square"
           />
-          <line
-            x1={10}
-            y1={50}
-            x2={90}
-            y2={50}
-            className="stroke-blue-500 fill-none"
-            strokeWidth={6}
-            strokeLinecap="square"
+
+          <rect
+            x={47}
+            y={12}
+            width={6}
+            height={76}
+            fill="url(#crossGradient)"
+            stroke="none"
           />
-          <line
-            x1={50}
-            y1={10}
-            x2={50}
-            y2={90}
-            className="stroke-blue-500 fill-none"
-            strokeWidth={6}
-            strokeLinecap="square"
+          <rect
+            x={12}
+            y={47}
+            width={76}
+            height={6}
+            fill="url(#crossGradient)"
+            stroke="none"
           />
         </svg>
       </TwoDConceptIcon>
@@ -118,6 +167,23 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="anglesGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+              spreadMethod="reflect"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <path
             d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
             className="stroke-blue-600 fill-none"
@@ -126,7 +192,8 @@ const twoDConcepts: ConceptData[] = [
           />
           <path
             d="M 10 85, L 30 20, L 50 65, L 70 30 L 90 60"
-            className="stroke-blue-500 fill-none"
+            fill="none"
+            stroke="url(#anglesGradient)"
             strokeLinecap="square"
             strokeWidth={6}
           />
@@ -156,6 +223,23 @@ const twoDConcepts: ConceptData[] = [
         <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
           <TwoDConceptIcon />
           <svg className="w-full h-full relative" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient
+                className={classNames(
+                  "[--gradientLightColor:theme(colors.blue.500)]",
+                  "[--gradientDarkColor:theme(colors.blue.600)]"
+                )}
+                id="spiralGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+                spreadMethod="reflect"
+              >
+                <stop offset="10%" stopColor="var(--gradientLightColor)" />
+                <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+              </linearGradient>
+            </defs>
             <path
               d={d}
               className="stroke-blue-600 fill-none"
@@ -164,7 +248,8 @@ const twoDConcepts: ConceptData[] = [
             />
             <path
               d={d}
-              className="stroke-blue-500 fill-none"
+              fill="none"
+              stroke="url(#spiralGradient)"
               strokeLinecap="round"
               strokeWidth={6}
             />
@@ -178,6 +263,23 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="wavyGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+              spreadMethod="reflect"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <path
             d="M 10,25 T 28,15, T 30,55, T 55,65 T 85,80"
             className="stroke-blue-600 fill-none"
@@ -186,7 +288,8 @@ const twoDConcepts: ConceptData[] = [
           />
           <path
             d="M 10,25 T 28,15, T 30,55, T 55,65 T 85,80"
-            className="stroke-blue-500 fill-none"
+            fill="none"
+            stroke="url(#wavyGradient)"
             strokeLinecap="round"
             strokeWidth={6}
           />
@@ -199,6 +302,23 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="ringGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+              spreadMethod="reflect"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <circle
             cx={50}
             cy={50}
@@ -210,7 +330,8 @@ const twoDConcepts: ConceptData[] = [
             cx={50}
             cy={50}
             r={35}
-            className="stroke-blue-500 fill-none"
+            fill="none"
+            stroke="url(#ringGradient)"
             strokeWidth={6}
           />
         </svg>
