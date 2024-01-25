@@ -34,6 +34,11 @@ const config = {
         sm: ["1px 2px 2px rgb(0 0 0 / 0.2)"],
         md: ["2px 4px 4px rgb(0 0 0 / 0.22)", "1px 2px 2px rgb(0 0 0 / 0.1)"],
         lg: ["3px 6px 6px rgb(0 0 0 / 0.25)", "1px 2px 2px rgb(0 0 0 / 0.1)"],
+
+        concept: [
+          "6px 50% 3px rgb(0 0 0 / 0.25)",
+          "2px 2px 1px rgb(0 0 0 / 0.1)",
+        ],
       },
 
       fontSize: {

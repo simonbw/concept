@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
+import { range } from "../../common/utils/arrayUtils";
+import { classNames } from "../utils/classNames";
 import { colorConcepts } from "./colorConcepts";
 import { geometryConcepts } from "./geometryConcepts";
-import { range } from "../../common/utils/arrayUtils";
 
 export interface ConceptData {
   description: string[];
@@ -229,10 +230,10 @@ export const concepts1: ConceptData[] = [
         <svg className="absolute inset-0" viewBox="0 0 100 100">
           {range(0, 8).map((i) => (
             <line
-              className="stroke-black stroke-[8]"
+              className="stroke-black stroke-[10]"
               x1={0}
-              y1={i * 25}
-              x2={i * 20}
+              y1={i * 32}
+              x2={i * 22}
               y2={0}
               strokeLinecap="square"
             />
@@ -610,7 +611,7 @@ export const concepts3: ConceptData[] = [
     description: ["Earth", "Ground"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-amber-400 to-brown-600">
-        <span className="text-5xl">🌎</span>
+        <img src="/static/images/dirt-pile.svg" />
       </div>
     ),
   },
@@ -634,7 +635,86 @@ export const concepts3: ConceptData[] = [
     description: ["Metal"],
     icon: (
       <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
-        <span className="text-5xl drop-shadow-sm">🔩</span>
+        <svg className="" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.gray.200)]",
+                "[--gradientMediumColor:theme(colors.gray.300)]",
+                "[--gradientDarkColor:theme(colors.gray.400)]"
+              )}
+              id="steelGradientTop"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="var(--gradientLightColor)" />
+              <stop offset="40%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="70%" stopColor="var(--gradientMediumColor)" />
+              <stop offset="100%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.gray.400)]",
+                "[--gradientDarkColor:theme(colors.gray.500)]",
+                "[--gradientDarklightColor:theme(colors.gray.600)]"
+              )}
+              id="steelGradientMiddle"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
+              <stop offset="0%" stopColor="var(--gradientLightColor)" />
+              <stop offset="40%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="60%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="100%" stopColor="var(--gradientLightColor)" />
+            </linearGradient>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.gray.400)]",
+                "[--gradientDarkColor:theme(colors.gray.500)]",
+                "[--gradientDarklightColor:theme(colors.gray.600)]"
+              )}
+              id="steelGradientBottom"
+              x1="0%"
+              y1="0%"
+              x2="0%"
+              y2="100%"
+            >
+              <stop offset="0%" stopColor="var(--gradientLightColor)" />
+              <stop offset="40%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="60%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="100%" stopColor="var(--gradientLightColor)" />
+            </linearGradient>
+          </defs>
+          <polygon
+            points="7,50 33,50 93,75 67,75"
+            className="stroke-gray-600"
+            fill="url(#steelGradientBottom)"
+            strokeWidth={1}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <polygon
+            points="20,30 80,55 80,75 20,50"
+            className="stroke-gray-600"
+            fill="url(#steelGradientMiddle)"
+            strokeWidth={1}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <polygon
+            points="7,30 33,30 93,55 67,55"
+            className="stroke-gray-600"
+            fill="url(#steelGradientTop)"
+            strokeWidth={1}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        {/* <span className="text-5xl drop-shadow-sm">🔩</span> */}
       </div>
     ),
   },
@@ -686,7 +766,6 @@ export const concepts3: ConceptData[] = [
   },
   {
     description: ["Fragment", "Multitude", "Cluster"],
-    // TODO: Better icon for this one
     icon: (
       <div className="concept-icon bg-gradient-to-bl from-sky-500 to-sky-300">
         <svg className="absolute inset-0 drop-shadow-sm" viewBox="0 0 100 100">

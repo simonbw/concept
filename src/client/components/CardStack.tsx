@@ -7,6 +7,8 @@ import { trpcClient } from "../trpc/trpcClient";
 import { classNames } from "../utils/classNames";
 import { DrawnCard } from "./DrawnCard";
 import { ModalBackground } from "./ModalBackground";
+import { ShuffleIcon } from "./icons/ShuffleIcon";
+import { UndoIcon } from "./icons/UndoIcon";
 
 export const CardStack: React.FC = () => {
   const gameState = useGameState();
@@ -102,13 +104,13 @@ const LastCardButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <button
       className={classNames(
-        "absolute left-0 shadow-md dark:shadow-black/80 w-6 h-6 rounded-full flex items-center justify-center",
+        "absolute left-0 drop-shadow-sm  w-6 h-6 rounded-full flex items-center justify-center",
         "bg-slate-500 text-slate-100 dark:bg-slate-800 dark:text-slate-200",
-        "transition hover:scale-[1.15] hover:dark:shadow-black/80 hover:shadow-lg active:dark:shadow-black/80 active:scale-125 active:shadow-xl"
+        "transition hover:scale-[1.15] hover:drop-shadow-md active:scale-125 active:drop-shadow-lg"
       )}
       onClick={onClick}
     >
-      ⎌
+      <UndoIcon className="w-4 h-4" />
     </button>
   );
 };
@@ -117,13 +119,13 @@ const ShuffleButton: React.FC = () => {
   return (
     <button
       className={classNames(
-        "absolute right-0 shadow-md dark:shadow-black/80 w-6 h-6 rounded-full flex items-center justify-center",
+        "absolute right-0 drop-shadow-sm  w-6 h-6 rounded-full flex items-center justify-center",
         "bg-slate-500 text-slate-100 dark:bg-slate-800 dark:text-slate-200",
-        "transition hover:scale-[1.15] hover:dark:shadow-black/80 hover:shadow-lg active:dark:shadow-black/80 active:scale-125 active:shadow-xl"
+        "transition hover:scale-[1.15] hover:drop-shadow-md active:scale-125 active:drop-shadow-lg"
       )}
       onClick={() => trpcClient.cards.shuffle.mutate()}
     >
-      🔀
+      <ShuffleIcon className="w-4 h-4" />
     </button>
   );
 };

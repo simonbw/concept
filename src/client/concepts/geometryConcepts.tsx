@@ -136,7 +136,6 @@ const twoDConcepts: ConceptData[] = [
   },
   {
     description: ["Spiral", "Drunkenness", "Coil"],
-    // TODO: Redo this with an SVG
     icon: (() => {
       const layers = 2.9;
       const resolution = 100;
@@ -204,14 +203,14 @@ const twoDConcepts: ConceptData[] = [
             cx={50}
             cy={50}
             r={35}
-            className="fill-none stroke-blue-600"
+            className="stroke-blue-600 fill-none"
             strokeWidth={12}
           />
           <circle
             cx={50}
             cy={50}
             r={35}
-            className="fill-none stroke-blue-500"
+            className="stroke-blue-500 fill-none"
             strokeWidth={6}
           />
         </svg>
@@ -223,12 +222,29 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="twoDGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <circle
             cx={50}
             cy={50}
             r={35}
-            className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            className="stroke-blue-600"
+            strokeWidth={2}
+            fill="url(#twoDGradient)"
           />
         </svg>
       </TwoDConceptIcon>
@@ -239,10 +255,27 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="twoDGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <polygon
             points="50,20 80,80 20,80"
-            className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            className="stroke-blue-600"
+            fill="url(#twoDGradient)"
+            strokeWidth={2}
           />
         </svg>
       </TwoDConceptIcon>
@@ -253,6 +286,22 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="twoDGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <polygon
             points={range(0, 9)
               .map((i) => {
@@ -262,8 +311,9 @@ const twoDConcepts: ConceptData[] = [
                 return `${50 + x},${52 + y}`;
               })
               .join(" ")}
-            className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            className="stroke-blue-600"
+            fill="url(#twoDGradient)"
+            strokeWidth={2}
           />
         </svg>
       </TwoDConceptIcon>
@@ -274,13 +324,30 @@ const twoDConcepts: ConceptData[] = [
     icon: (
       <TwoDConceptIcon>
         <svg className="w-full h-full relative" viewBox="0 0 100 100">
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.500)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="twoDGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="10%" stopColor="var(--gradientLightColor)" />
+              <stop offset="90%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <rect
             x={30}
             y={20}
             width={40}
             height={60}
-            className="stroke-blue-600 fill-blue-500"
-            strokeWidth={4}
+            className="stroke-blue-600"
+            fill="url(#twoDGradient)"
+            strokeWidth={2}
           />
         </svg>
       </TwoDConceptIcon>
@@ -336,28 +403,25 @@ const threeDConcepts: ConceptData[] = [
     icon: (
       <ThreeDConceptIcon>
         <svg
-          className={classNames(
-            "w-full h-full relative",
-            "[--gradientHighlightColor:theme(colors.blue.100)]",
-            "[--gradientLightColor:theme(colors.blue.300)]",
-            "[--gradientDarkColor:theme(colors.blue.700)]"
-          )}
+          className="w-full h-full relative drop-shadow-concept"
           viewBox="0 0 100 100"
         >
-          <linearGradient
-            className={classNames(
-              "[--gradientLightColor:theme(colors.blue.300)]",
-              "[--gradientDarkColor:theme(colors.blue.600)]"
-            )}
-            id="flatGradient"
-            x1="20%"
-            y1="0%"
-            x2="80%"
-            y2="100%"
-          >
-            <stop offset="20%" stopColor="var(--gradientLightColor)" />
-            <stop offset="100%" stopColor="var(--gradientDarkColor)" />
-          </linearGradient>
+          <defs>
+            <linearGradient
+              className={classNames(
+                "[--gradientLightColor:theme(colors.blue.300)]",
+                "[--gradientDarkColor:theme(colors.blue.600)]"
+              )}
+              id="flatGradient"
+              x1="20%"
+              y1="0%"
+              x2="80%"
+              y2="100%"
+            >
+              <stop offset="20%" stopColor="var(--gradientLightColor)" />
+              <stop offset="100%" stopColor="var(--gradientDarkColor)" />
+            </linearGradient>
+          </defs>
           <polygon
             points="30,60 70,60 88,85 12,85"
             className="stroke-blue-600"
@@ -372,7 +436,10 @@ const threeDConcepts: ConceptData[] = [
     description: ["Cube"],
     icon: (
       <ThreeDConceptIcon>
-        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+        <svg
+          className="w-full h-full relative drop-shadow-concept"
+          viewBox="0 0 100 100"
+        >
           <polygon
             points="20,30 50,40 50,90 20,80"
             className="stroke-blue-600 fill-blue-500"
@@ -399,7 +466,10 @@ const threeDConcepts: ConceptData[] = [
     description: ["Sphere"],
     icon: (
       <ThreeDConceptIcon>
-        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+        <svg
+          className="w-full h-full relative drop-shadow-concept"
+          viewBox="0 0 100 100"
+        >
           <defs>
             <radialGradient
               className={classNames(
@@ -408,13 +478,15 @@ const threeDConcepts: ConceptData[] = [
                 "[--gradientDarkColor:theme(colors.blue.700)]"
               )}
               id="sphereGradient"
-              cx="25%"
-              cy="25%"
+              cx="50%"
+              cy="50%"
+              fx="25%"
+              fy="20%"
               r="100%"
             >
               <stop offset="0%" stopColor="var(--gradientHighlightColor)" />
               <stop offset="10%" stopColor="var(--gradientLightColor)" />
-              <stop offset="70%" stopColor="var(--gradientDarkColor)" />
+              <stop offset="60%" stopColor="var(--gradientDarkColor)" />
             </radialGradient>
           </defs>
           <circle
@@ -433,7 +505,10 @@ const threeDConcepts: ConceptData[] = [
     description: ["Pyramid"],
     icon: (
       <ThreeDConceptIcon>
-        <svg className="w-full h-full relative" viewBox="0 0 100 100">
+        <svg
+          className="w-full h-full relative drop-shadow-concept"
+          viewBox="0 0 100 100"
+        >
           <polygon
             points="50,20 50,90 20,80"
             className="stroke-blue-700 fill-blue-400"
@@ -455,7 +530,7 @@ const threeDConcepts: ConceptData[] = [
     icon: (
       <ThreeDConceptIcon>
         <svg
-          className="w-full h-full relative text-blue-700"
+          className="w-full h-full relative text-blue-700 drop-shadow-concept"
           viewBox="0 0 100 100"
         >
           <defs>
@@ -502,7 +577,7 @@ const threeDConcepts: ConceptData[] = [
     icon: (
       <ThreeDConceptIcon>
         <svg
-          className="w-full h-full relative text-blue-700"
+          className="w-full h-full relative text-blue-700 drop-shadow-concept"
           viewBox="0 0 100 100"
         >
           <defs>
@@ -515,8 +590,8 @@ const threeDConcepts: ConceptData[] = [
               )}
               x1="0%"
               y1="0%"
-              x2="100%"
-              y2="32%"
+              x2="98%"
+              y2="30%"
             >
               <stop offset="0%" stopColor="var(--gradientDarkColor)" />
               <stop offset="42%" stopColor="var(--gradientLightColor)" />
