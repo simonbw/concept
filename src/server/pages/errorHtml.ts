@@ -6,7 +6,7 @@ export function errorHtml(error: Error) {
   <meta name="viewport" content="width=device-width">
   <title>Concept Error</title>
   <link rel="icon" type="image/png" href="/static/images/favicon.png">
-  <link rel="stylesheet" href="/static/styles/game-page-index.css" />
+  <link rel="stylesheet" href="/static/styles/index.css" />
 </head>
 
 <body class="p-4">

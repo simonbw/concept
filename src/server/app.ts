@@ -1,6 +1,7 @@
 import { applyWSSHandler } from "@trpc/server/adapters/ws";
 import express from "express";
 import { WebSocketServer } from "ws";
+import { DEFAULT_GAME_ID } from "./gameState";
 import { errorHandler } from "./middleware/errorHandler";
 import { getStaticsMiddleware } from "./middleware/getStaticsMiddleware";
 import pagesRouter from "./middleware/pagesRouter";
@@ -15,7 +16,17 @@ export async function makeApp() {
   applyWSSHandler({
     wss,
     router: trpcRouter,
-    createContext: createTrpcContext,
+    createContext: (props) => {
+      const url = props.req.url;
+      if (!url) throw new Error("No url");
+
+      const gameId = url.split("/")[2] ?? DEFAULT_GAME_ID;
+
+      console.log({ url });
+      console.log("creating websocket for game id", gameId);
+
+      return createTrpcContext({ gameId });
+    },
   });
 
   const app = express();

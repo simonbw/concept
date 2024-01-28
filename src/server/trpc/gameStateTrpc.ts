@@ -8,8 +8,8 @@ import { DiffStream } from "../../common/models/diffStreamSchema";
 import { idMaker } from "../../common/utils/idMaker";
 import { WebError } from "../WebError";
 import {
-  gameStateDiffChannel,
   getGameState,
+  getGameStateDiffChannel,
   resetGameState,
   updateGameState,
 } from "../gameState";
@@ -19,13 +19,15 @@ const makeId = idMaker();
 
 export const gameStateTrpcRouter = trpc.router({
   // Queries
-  get: trpc.procedure.query(() => getGameState()),
+  get: trpc.procedure.query(({ ctx }) => getGameState(ctx.gameId)),
 
-  stream: trpc.procedure.subscription(() =>
+  stream: trpc.procedure.subscription(({ ctx }) =>
     observable<DiffStream<GameState>>((observer) => {
       const id = makeId();
-      observer.next({ type: "replace", state: getGameState() });
 
+      observer.next({ type: "replace", state: getGameState(ctx.gameId) });
+
+      const gameStateDiffChannel = getGameStateDiffChannel(ctx.gameId);
       const listenerId = gameStateDiffChannel.subscribe((data) => {
         observer.next(data);
       });
@@ -37,18 +39,18 @@ export const gameStateTrpcRouter = trpc.router({
   ),
 
   // Mutations
-  reset: trpc.procedure.mutation(async () => {
+  reset: trpc.procedure.mutation(async ({ ctx }) => {
     console.log("Resetting game state");
-    await resetGameState();
-    return getGameState();
+    await resetGameState(ctx.gameId);
+    return getGameState(ctx.gameId);
   }),
 
   patch: trpc.procedure
     .input(gameStateSchema.deepPartial())
-    .mutation(async ({ input: gameStatePatch }) => {
+    .mutation(async ({ input: gameStatePatch, ctx }) => {
       console.log("Patching Game State", gameStatePatch);
 
-      await updateGameState((gameState) => {
+      return await updateGameState(ctx.gameId, (gameState) => {
         const merged = merge.withOptions(
           { allowUndefinedOverrides: false, mergeArrays: false },
           gameState,
@@ -61,7 +63,5 @@ export const gameStateTrpcRouter = trpc.router({
           throw new WebError(result.error.message, 400);
         }
       });
-
-      return getGameState();
     }),
 });

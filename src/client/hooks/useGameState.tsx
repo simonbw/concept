@@ -1,54 +1,27 @@
-import jsonpatch from "fast-json-patch";
 import React, {
   RefObject,
   useCallback,
   useContext,
   useEffect,
   useRef,
-  useState,
 } from "react";
 import {
   GameState,
   gameStateSchema,
 } from "../../common/models/GameStateSchema";
-import {
-  DiffStream,
-  diffStreamSchema,
-} from "../../common/models/diffStreamSchema";
 import { trpcClient } from "../trpc/trpcClient";
+import { useDiffStreamSubscription } from "./useDiffStreamSubscription";
 
 type StateChangeListener = (newState: GameState, oldState?: GameState) => void;
 
 function useGameStateStream(
-  onChange?: StateChangeListener,
+  onChange?: StateChangeListener
 ): GameState | undefined {
-  const [state, setState] = useState<GameState | undefined>(undefined);
-  const onChangeRef = useRef(onChange);
-  onChangeRef.current = onChange;
-
-  useEffect(() => {
-    trpcClient.gameState.stream.subscribe(undefined, {
-      onData: (data) => {
-        const parsed: DiffStream<GameState> =
-          diffStreamSchema(gameStateSchema).parse(data);
-        if (parsed.type === "replace") {
-          setState(parsed.state);
-          onChangeRef.current?.(parsed.state);
-        } else if (parsed.type === "diff") {
-          setState((state) => {
-            const newState = gameStateSchema.parse(
-              jsonpatch.applyPatch(state, parsed.diff, true, false).newDocument,
-            );
-            onChangeRef.current?.(newState, state);
-            return newState;
-          });
-        } else {
-          throw new Error("Unrecognized message type");
-        }
-      },
-    });
-  }, []);
-  return state;
+  return useDiffStreamSubscription(
+    trpcClient.gameState.stream.subscribe,
+    gameStateSchema,
+    onChange
+  );
 }
 
 const GameStateContext = React.createContext<{

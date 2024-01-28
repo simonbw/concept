@@ -17,6 +17,7 @@ export type PiecePosition = z.infer<typeof piecePositionSchema>;
 
 export const gameStateSchema = z.object({
   startedAt: z.number().nullable(),
+  updatedAt: z.number().nullable(),
 
   pieces: z.array(
     z.object({

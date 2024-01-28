@@ -12,8 +12,16 @@ import { classNames } from "../utils/classNames";
 import { GamePieceIcon } from "./GamePieceIcon";
 
 export const PieceStacks: React.FC = () => {
+  const gameState = useGameState();
+
   return (
-    <div className="flex gap-6 justify-center mb-4">
+    <div
+      className={classNames(
+        "flex gap-6 justify-center mb-4",
+        "transition-opacity duration-300",
+        gameState ? "opacity-100" : "opacity-0"
+      )}
+    >
       {pieceColorSchema.options.map((color) => (
         <div key={color} className="flex gap-2 items-center">
           {pieceSizeSchema.options

@@ -1,7 +1,9 @@
 import { inferAsyncReturnType, initTRPC } from "@trpc/server";
 
 // created for each request
-export const createTrpcContext = () => ({}); // no context
+export const createTrpcContext = ({ gameId }: { gameId: string }) => ({
+  gameId,
+}); // no context
 export type TrpcContext = inferAsyncReturnType<typeof createTrpcContext>;
 
 /**

@@ -3,6 +3,7 @@ import { range } from "../../common/utils/arrayUtils";
 import { classNames } from "../utils/classNames";
 import { colorConcepts } from "./colorConcepts";
 import { geometryConcepts } from "./geometryConcepts";
+import { DirtPileIcon } from "../components/icons/DirtPile";
 
 export interface ConceptData {
   description: string[];
@@ -230,6 +231,7 @@ export const concepts1: ConceptData[] = [
         <svg className="absolute inset-0" viewBox="0 0 100 100">
           {range(0, 8).map((i) => (
             <line
+              key={i}
               className="stroke-black stroke-[10]"
               x1={0}
               y1={i * 32}
@@ -611,7 +613,7 @@ export const concepts3: ConceptData[] = [
     description: ["Earth", "Ground"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-amber-400 to-brown-600">
-        <img src="/static/images/dirt-pile.svg" />
+        <DirtPileIcon />
       </div>
     ),
   },

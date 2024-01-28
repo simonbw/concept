@@ -7,8 +7,8 @@ const makeId = idMaker();
 
 export const cardsTrpcRouter = trpc.router({
   // Mutations
-  draw: trpc.procedure.mutation(async () => {
-    await updateGameState((gameState) => {
+  draw: trpc.procedure.mutation(async ({ ctx }) => {
+    await updateGameState(ctx.gameId, (gameState) => {
       return {
         ...gameState,
         cardsDrawn: gameState.cardsDrawn + 1,
@@ -16,12 +16,12 @@ export const cardsTrpcRouter = trpc.router({
     });
   }),
 
-  shuffle: trpc.procedure.mutation(async () => {
-    await updateGameState((gameState) => {
+  shuffle: trpc.procedure.mutation(async ({ ctx }) => {
+    await updateGameState(ctx.gameId, (gameState) => {
       return {
         ...gameState,
         cardsDrawn: 0,
-        // deckSeed: rInteger(0, Number.MAX_SAFE_INTEGER),
+        deckSeed: rInteger(0, Number.MAX_SAFE_INTEGER),
       };
     });
   }),

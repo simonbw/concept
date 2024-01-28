@@ -20,9 +20,9 @@ export const piecesTrpcRouter = trpc.router({
         position: piecePositionSchema,
       })
     )
-    .mutation(async ({ input }) => {
+    .mutation(async ({ input, ctx }) => {
       const newPiece = { ...input, id: makeId() };
-      await updateGameState((gameState) => {
+      await updateGameState(ctx.gameId, (gameState) => {
         return {
           ...gameState,
           pieces: [...gameState.pieces, newPiece],
@@ -31,8 +31,8 @@ export const piecesTrpcRouter = trpc.router({
       return newPiece;
     }),
 
-  remove: trpc.procedure.input(z.string()).mutation(async ({ input }) => {
-    await updateGameState((gameState) => {
+  remove: trpc.procedure.input(z.string()).mutation(async ({ input, ctx }) => {
+    await updateGameState(ctx.gameId, (gameState) => {
       return {
         ...gameState,
         pieces: gameState.pieces.filter((p) => p.id !== input),
@@ -40,8 +40,8 @@ export const piecesTrpcRouter = trpc.router({
     });
   }),
 
-  clear: trpc.procedure.mutation(async () => {
-    await updateGameState((gameState) => {
+  clear: trpc.procedure.mutation(async ({ ctx }) => {
+    await updateGameState(ctx.gameId, (gameState) => {
       return {
         ...gameState,
         pieces: [],
@@ -56,8 +56,8 @@ export const piecesTrpcRouter = trpc.router({
         position: piecePositionSchema,
       })
     )
-    .mutation(async ({ input }) => {
-      await updateGameState((gameState) => {
+    .mutation(async ({ input, ctx }) => {
+      await updateGameState(ctx.gameId, (gameState) => {
         const piece = gameState.pieces.find((p) => p.id === input.id);
         if (!piece) {
           throw new Error(`Piece ${input.id} not found`);
