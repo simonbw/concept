@@ -1,12 +1,13 @@
 import headlessPlugin from "@headlessui/tailwindcss";
 import opentypePlugin from "tailwindcss-opentype";
+import typeographyPlugin from "@tailwindcss/typography";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: ["./src/**/*.{html,js,ts,tsx}"],
 
-  plugins: [opentypePlugin, headlessPlugin],
+  plugins: [opentypePlugin, headlessPlugin, typeographyPlugin],
 
   theme: {
     screens: {

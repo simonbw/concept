@@ -6,6 +6,7 @@ import { BoardPositionProvider } from "./BoardPositionContext";
 import { GameBoard } from "./GameBoard";
 import { GamePiece } from "./GamePiece";
 import { PieceStacks } from "./PieceStacks";
+import { HowToModal } from "./HowToModal";
 
 export const GamePage: React.FC = () => {
   const gameState = useGameState();
@@ -15,7 +16,11 @@ export const GamePage: React.FC = () => {
   return (
     <div className="p-8 flex flex-col items-center justify-start min-h-screen">
       <button
-        className="absolute top-4 left-4 rounded-full w-8 h-8 shadow-slate-500/80 dark:shadow-black/80 shadow-md bg-slate-600 text-slate-100 flex items-center justify-center z-40"
+        className={classNames(
+          "absolute top-4 left-4 z-40",
+          "flex items-center justify-center",
+          "rounded-full w-8 h-8 shadow-slate-500/80 dark:shadow-black/80 shadow-md bg-slate-600 text-slate-100"
+        )}
         onClick={() => setCompact((c) => !c)}
       >
         <span
@@ -27,6 +32,7 @@ export const GamePage: React.FC = () => {
           {"⏵"}
         </span>
       </button>
+      <HowToModal />
       <Transition
         show={!compact}
         appear

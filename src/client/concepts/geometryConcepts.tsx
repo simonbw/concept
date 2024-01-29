@@ -3,6 +3,7 @@ import { range } from "../../common/utils/arrayUtils";
 import { lerp, polarToVec } from "../../common/utils/mathUtils";
 import { ConceptData } from "./concepts";
 import { classNames } from "../utils/classNames";
+import { RepeatIcon } from "../components/icons/RepeatIcon";
 
 const TwoDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
   return (
@@ -205,8 +206,8 @@ const twoDConcepts: ConceptData[] = [
     description: ["Spiral", "Drunkenness", "Coil"],
     icon: (() => {
       const layers = 2.9;
-      const resolution = 100;
-      const maxRadius = 43;
+      const resolution = 200;
+      const maxRadius = 45;
       const [cx, cy] = [53, 53];
       const d =
         `M ${cx},${cy} ` +
@@ -251,6 +252,7 @@ const twoDConcepts: ConceptData[] = [
               fill="none"
               stroke="url(#spiralGradient)"
               strokeLinecap="round"
+              strokeLinejoin="round"
               strokeWidth={6}
             />
           </svg>
@@ -887,7 +889,9 @@ const spatialConcepts: ConceptData[] = [
     description: ["Turn", "Around", "Cycle / Repetition"],
     icon: (
       <SpatialConceptIcon>
-        <span className="text-5xl relative">🔄</span>
+        <span className="text-5xl relative">
+          <RepeatIcon className="w-full h-full" />
+        </span>
       </SpatialConceptIcon>
     ),
   },

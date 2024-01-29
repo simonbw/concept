@@ -13,7 +13,7 @@ export const GamePieceIcon: React.FC<{
     <Transition
       show
       appear
-      as="div"
+      as="span"
       // enter="transition duration-300"
       // enterFrom="scale-0 opacity-0"
       // enterTo="scale-100 opacity-100"
