@@ -86,28 +86,24 @@ export function shuffle<T>(a: T[]): T[] {
 
 /** Put an array into a deterministically random order and return the array. Seed should be an integer */
 export function seededShuffle<T>(a: T[], seed: number = getSeed()): T[] {
-  let i: number, j: string | number, temp: T;
-  i = a.length;
-  while (--i > 0) {
+  for (let i = a.length - 1; i >= 0; i--) {
     seed = (seed * 1103515245 + 12345) | 0;
-    j = mod(seed, i + 1);
-    temp = a[j];
-    a[j] = a[i];
-    a[i] = temp;
+    const j = mod(seed, i + 1);
+    [a[j], a[i]] = [a[i], a[j]];
   }
   return a;
 }
 
 export function getSeed(): number {
   const urlSeed = Number(
-    new URLSearchParams(window.location.search).get("seed"),
+    new URLSearchParams(window.location.search).get("seed")
   );
   return urlSeed || randomSeed();
 }
 
 export function getGoalSeed(): number | undefined {
   const urlSeed = Number(
-    new URLSearchParams(window.location.search).get("goal"),
+    new URLSearchParams(window.location.search).get("goal")
   );
   return urlSeed || undefined;
 }
