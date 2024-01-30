@@ -3,7 +3,6 @@ export const SwordsIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
-    className="iconify iconify--noto"
     viewBox="0 0 128 128"
     {...props}
   >
