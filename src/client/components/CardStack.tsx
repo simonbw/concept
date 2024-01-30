@@ -9,11 +9,15 @@ import { DrawnCard } from "./DrawnCard";
 import { ModalBackground } from "./ModalBackground";
 import { ShuffleIcon } from "./icons/ShuffleIcon";
 import { UndoIcon } from "./icons/UndoIcon";
+import { useDeck } from "../hooks/useGameState copy";
 
 export const CardStack: React.FC = () => {
   const gameState = useGameState();
   const cardsDrawn = gameState?.cardsDrawn ?? 0;
   const cardsRemain = allCards.length - cardsDrawn;
+  const { deck, discardPile } = useDeck();
+
+  const lastCard = deck[deck.length - 1];
 
   const [currentCard, setCurrentCard] = useState<CardData | null>(null);
 
@@ -71,7 +75,7 @@ export const CardStack: React.FC = () => {
               </div>
             </div>
           ))}
-        {cardsRemain > 0 && (
+        {deck.length > 0 && (
           <div
             className={classNames(
               "absolute inset-2 rounded-xl flex items-center justify-center shadow select-none cursor-pointer p-2",
@@ -80,7 +84,7 @@ export const CardStack: React.FC = () => {
             )}
             onClick={() => {
               trpcClient.cards.draw.mutate();
-              setCurrentCard(allCards[cardsDrawn]);
+              setCurrentCard(deck[0]);
             }}
           >
             <div className="border-2 border-slate-300 dark:border-slate-600 w-full h-full rounded-xl flex items-center justify-center">
@@ -89,10 +93,8 @@ export const CardStack: React.FC = () => {
           </div>
         )}
 
-        {cardsDrawn > 0 && (
-          <LastCardButton
-            onClick={() => setCurrentCard(allCards[cardsDrawn - 1])}
-          />
+        {discardPile.length > 0 && (
+          <LastCardButton onClick={() => setCurrentCard(discardPile[0])} />
         )}
         <ShuffleButton />
       </div>

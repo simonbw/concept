@@ -2,20 +2,25 @@ import React, { ReactNode } from "react";
 import { range } from "../../common/utils/arrayUtils";
 import { AirplaneIcon } from "../components/icons/AirplaneIcon";
 import { BabyIcon } from "../components/icons/BabyIcon";
+import { BalloonIcon } from "../components/icons/BalloonIcon";
 import { BoatIcon } from "../components/icons/BoatIcon";
 import { BooksIcon } from "../components/icons/BooksIcon";
 import { BowlingIcon } from "../components/icons/BowlingIcon";
 import { BoxIcon } from "../components/icons/Box";
 import { BurgerIcon } from "../components/icons/BurgerIcon";
+import { CalendarIcon } from "../components/icons/CalendarIcon";
 import { CarIcon } from "../components/icons/CarIcon";
+import { ChampagneIcon } from "../components/icons/ChampagneIcon";
 import { CityIcon } from "../components/icons/CityIcon";
 import { ClockIcon } from "../components/icons/ClockIcon";
 import { ConstructionWorkerIcon } from "../components/icons/ConstructionWorker";
 import { CrownIcon } from "../components/icons/CrownIcon";
+import { DiceIcon } from "../components/icons/DiceIcon";
 import { DirtPileIcon } from "../components/icons/DirtIcon";
 import { DoctorIcon } from "../components/icons/DoctorIcon";
 import { FabricIcon } from "../components/icons/FabricIcon";
 import { FireIcon } from "../components/icons/FireIcon";
+import { GameBoyIcon } from "../components/icons/GameBoyIcon";
 import { GrandmaIcon } from "../components/icons/GrandmaIcon";
 import { GrandpaIcon } from "../components/icons/GrandpaIcon";
 import { GroupIcon } from "../components/icons/GroupIcon";
@@ -30,6 +35,8 @@ import { MonkeyIcon } from "../components/icons/MonkeyIcon";
 import { MovieIcon } from "../components/icons/MovieIcon";
 import { MusicIcon2 } from "../components/icons/MusicIcon2";
 import { NightSkyIcon } from "../components/icons/NightSkyIcon";
+import { PaintIcon } from "../components/icons/PaintIcon";
+import { PartyIcon } from "../components/icons/PartyIcon";
 import { PigIcon } from "../components/icons/PigIcon";
 import { PlantIcon1 } from "../components/icons/PlantIcon1";
 import { PlantIcon2 } from "../components/icons/PlantIcon2";
@@ -38,6 +45,9 @@ import { PlantIcon4 } from "../components/icons/PlantIcon4";
 import { RainIcon } from "../components/icons/RainIcon";
 import { RoadIcon } from "../components/icons/RoadIcon";
 import { SadIcon } from "../components/icons/SadIcon";
+import { ScissorsIcon } from "../components/icons/ScissorsIcon";
+import { SculptureIcon } from "../components/icons/SculptureIcon";
+import { ShieldIcon } from "../components/icons/ShieldIcon";
 import { ShipIcon } from "../components/icons/ShipIcon";
 import { SkullIcon } from "../components/icons/SkullIcon";
 import { SoccerIcon } from "../components/icons/SoccerIcon";
@@ -47,6 +57,8 @@ import { SteelIcon } from "../components/icons/SteelIcon";
 import { StoneIcon } from "../components/icons/Stone";
 import { StormIcon } from "../components/icons/StormIcon";
 import { SunIcon } from "../components/icons/SunIcon";
+import { SwordsIcon } from "../components/icons/SwordsIcon";
+import { TeddyBearIcon } from "../components/icons/TeddyBearIcon";
 import { ToolIcon } from "../components/icons/ToolIcon";
 import { TvIcon } from "../components/icons/TvIcon";
 import { WaterIcon } from "../components/icons/WaterIcon";
@@ -54,7 +66,6 @@ import { WomanIcon } from "../components/icons/WomanIcon";
 import { WoodIcon } from "../components/icons/WoodIcon";
 import { colorConcepts } from "./colorConcepts";
 import { geometryConcepts } from "./geometryConcepts";
-import { ScissorsIcon } from "../components/icons/ScissorsIcon";
 
 export interface ConceptData {
   description: string[];
@@ -172,8 +183,9 @@ export const concepts1: ConceptData[] = [
   {
     description: ["Art", "Sculpture", "Painting", "Drawing", "Cartoon"],
     icon: (
-      <div className="concept-icon bg-gradient-to-br from-sky-500 to-sky-300">
-        <span className="text-5xl drop-shadow-md">🎨</span>
+      <div className="concept-icon bg-gradient-to-tr from-sky-600 to-sky-300">
+        <SculptureIcon className="absolute drop-shadow-sm left-0.5 h-[90%]" />
+        <PaintIcon className="absolute drop-shadow-sm w-9 right-1" />
       </div>
     ),
   },
@@ -237,7 +249,7 @@ export const concepts1: ConceptData[] = [
     description: ["Date", "Event", "Day"],
     icon: (
       <div className="concept-icon bg-gradient-to-t from-sky-500 to-sky-200">
-        <span className="text-5xl drop-shadow-sm">📅</span>
+        <CalendarIcon className="relative drop-shadow-sm m-1 top-0.5" />
       </div>
     ),
   },
@@ -245,7 +257,14 @@ export const concepts1: ConceptData[] = [
     description: ["Celebration", "Anniversary", "Holiday"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-yellow-100/50 to-yellow-200/50">
-        <span className="text-5xl drop-shadow-sm">🎉</span>
+        <PartyIcon className="absolute drop-shadow-sm w-12 -bottom-4 -right-4 -scale-x-100 opacity-30" />
+        <PartyIcon className="absolute drop-shadow-sm w-12 -bottom-4 -left-4 opacity-30" />
+        <PartyIcon className="absolute drop-shadow-sm w-12 -top-4 -left-4 -scale-y-100 opacity-30" />
+        <PartyIcon className="absolute drop-shadow-sm w-12 -top-4 -right-4 -scale-100 opacity-30" />
+        <BalloonIcon className="absolute drop-shadow-sm w-10 -top-1 -scale-x-100" />
+        <BalloonIcon className="absolute drop-shadow-sm w-10 -right-1.5 top-2 -scale-x-100 -rotate-6" />
+        <BalloonIcon className="absolute drop-shadow-sm w-10 -left-1.5 top-3 -rotate-6" />
+        <ChampagneIcon className="relative drop-shadow-sm w-14 top-0.5 right-1 -scale-x-100" />
       </div>
     ),
   },
@@ -257,7 +276,7 @@ export const concepts1: ConceptData[] = [
         <div className="absolute inset-x-0 bottom-0 top-[50%] bg-gradient-to-b from-blue-400 to-blue-800" />
 
         <ShipIcon className="absolute drop-shadow-sm w-12 left-0 bottom-4" />
-        <BoatIcon className="absolute drop-shadow-sm-strong w-9 right-0.5 bottom-0.5 -scale-x-100" />
+        <BoatIcon className="absolute drop-shadow-sm w-9 right-0.5 bottom-0.5 -scale-x-100" />
       </div>
     ),
   },
@@ -265,9 +284,6 @@ export const concepts1: ConceptData[] = [
     description: ["Aircraft", "Aerial", "Flying"],
     icon: (
       <div className="concept-icon bg-gradient-to-t from-sky-500 to-sky-200">
-        {/* <span className="absolute inset-0 text-8xl text-white/35 flex items-center justify-center">
-          ✈️
-        </span> */}
         <AirplaneIcon className="absolute opacity-35 -inset-2" />
         <HelicopterIcon className="drop-shadow-md -mt-4" />
       </div>
@@ -307,12 +323,9 @@ export const concepts1: ConceptData[] = [
     description: ["Game", "Toy"],
     icon: (
       <div className="concept-icon bg-gradient-to-tl from-orange-400 to-yellow-200">
-        <span className="absolute right-2 bottom-1 text-4xl w-5 flex justify-center items-center drop-shadow-sm">
-          🎲
-        </span>
-        <span className="absolute left-0 text-6xl flex justify-center items-center drop-shadow-sm">
-          🧸
-        </span>
+        <GameBoyIcon className="absolute right-0 top-1.5 w-8 drop-shadow-sm rotate-12" />
+        <DiceIcon className="absolute right-0.5 bottom-1.5 w-6 drop-shadow-sm" />
+        <TeddyBearIcon className="absolute w-14 -left-1 drop-shadow-sm -rotate-1" />
       </div>
     ),
   },
@@ -358,7 +371,6 @@ export const concepts2: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-br from-orange-300/50 to-orange-200/30">
         <BabyIcon className="drop-shadow-sm m-2" />
-        {/* <span className="text-3xl drop-shadow-sm">👶🧒</span> */}
       </div>
     ),
   },
@@ -368,7 +380,6 @@ export const concepts2: ConceptData[] = [
       <div className="concept-icon bg-gradient-to-r from-gray-200 to-gray-400">
         <GrandpaIcon className="absolute w-10 -right-1 drop-shadow-sm rotate-6" />
         <GrandmaIcon className="absolute w-10 -left-1 drop-shadow-sm -rotate-6" />
-        {/* <span className="text-3xl drop-shadow-sm">👴👵</span> */}
       </div>
     ),
   },
@@ -414,15 +425,17 @@ export const concepts2: ConceptData[] = [
     description: ["Defense", "Protection", "Wall"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-sky-800 to-sky-600">
-        <span className="text-5xl drop-shadow-sm">🛡️</span>
+        {/* <span className="text-5xl drop-shadow-sm">🛡️</span> */}
+        <ShieldIcon className="drop-shadow-sm m-1.5" />
       </div>
     ),
   },
   {
     description: ["Attack", "Conflict", "Combat", "Weapon"],
     icon: (
-      <div className="concept-icon bg-gradient-to-r from-black to-black">
-        <span className="text-5xl drop-shadow-sm">⚔️</span>
+      <div className="concept-icon bg-[radial-gradient(theme(colors.red.800)_0,theme(colors.black)_80%)]">
+        {/* <span className="text-5xl drop-shadow-sm">⚔️</span> */}
+        <SwordsIcon className="drop-shadow-sm m-1.5" />
       </div>
     ),
   },
@@ -644,9 +657,6 @@ export const concepts3: ConceptData[] = [
     icon: (
       <div className="concept-icon bg-gradient-to-t from-red-500 to-orange-400">
         <FireIcon className="drop-shadow-fire m-1" />
-        {/* <span className="text-5xl drop-shadow-[0_0_5px_rgba(255,210,100,0.99)]">
-          🔥
-        </span> */}
       </div>
     ),
   },
