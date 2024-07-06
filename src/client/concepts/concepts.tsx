@@ -185,7 +185,7 @@ export const concepts1: ConceptData[] = [
     description: ["Cinema", "Movie"],
     icon: (
       <div className="concept-icon bg-gradient-to-b from-sky-300 to-sky-400">
-        <MovieIcon className="drop-shadow-sm-strong m-1 -scale-x-100" />
+        <MovieIcon className="drop-shadow-sm m-1 -scale-x-100" />
       </div>
     ),
   },
