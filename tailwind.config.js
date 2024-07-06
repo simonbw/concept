@@ -77,6 +77,25 @@ const config = {
       maxWidth: ({ theme }) => ({
         ...theme("spacing"),
       }),
+
+      animation: {
+        breathe: "breathe 500ms ease-in-out infinite backwards",
+        "grow-in": "grow 150ms ease-in-out",
+        "shrink-out": "shrink 150ms ease-in-out",
+      },
+      keyframes: {
+        breathe: {
+          "0%, 100%": { transform: "scale(100%)" },
+          "50%": { transform: "scale(110%)" },
+        },
+        grow: {
+          from: { transform: "scale(10%)", opacity: 0 },
+          to: { transform: "scale(100%)", opacity: 1 },
+        },
+        shrink: {
+          to: { transform: "scale(10%)", opacity: 0 },
+        },
+      },
     },
   },
 };

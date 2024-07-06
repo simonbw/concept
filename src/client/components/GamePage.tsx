@@ -7,6 +7,7 @@ import { GameBoard } from "./GameBoard";
 import { GamePiece } from "./GamePiece";
 import { PieceStacks } from "./PieceStacks";
 import { HowToModal } from "./HowToModal";
+import { EffectsManager } from "./EffectsManager";
 
 export const GamePage: React.FC = () => {
   const gameState = useGameState();
@@ -53,6 +54,7 @@ export const GamePage: React.FC = () => {
         </h1>
       </Transition>
       <BoardPositionProvider>
+        <EffectsManager />
         {gameState?.pieces.map((piece, i) => (
           <GamePiece key={i} id={piece.id} />
         ))}

@@ -25,6 +25,7 @@ export const gameStateSchema = z.object({
       size: pieceSizeSchema,
       color: pieceColorSchema,
       position: piecePositionSchema,
+      lifted: z.boolean(),
     })
   ),
 
@@ -33,3 +34,4 @@ export const gameStateSchema = z.object({
 });
 
 export type GameState = Readonly<z.infer<typeof gameStateSchema>>;
+export type PieceState = z.infer<typeof gameStateSchema>["pieces"][number];

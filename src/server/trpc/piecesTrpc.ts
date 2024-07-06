@@ -18,6 +18,7 @@ export const piecesTrpcRouter = trpc.router({
         color: pieceColorSchema,
         size: pieceSizeSchema,
         position: piecePositionSchema,
+        lifted: z.boolean(),
       })
     )
     .mutation(async ({ input, ctx }) => {
@@ -54,18 +55,19 @@ export const piecesTrpcRouter = trpc.router({
       z.object({
         id: z.string(),
         position: piecePositionSchema,
+        lifted: z.boolean(),
       })
     )
-    .mutation(async ({ input, ctx }) => {
+    .mutation(async ({ input: { id, position, lifted }, ctx }) => {
       await updateGameState(ctx.gameId, (gameState) => {
-        const piece = gameState.pieces.find((p) => p.id === input.id);
+        const piece = gameState.pieces.find((p) => p.id === id);
         if (!piece) {
-          throw new Error(`Piece ${input.id} not found`);
+          throw new Error(`Piece ${id} not found`);
         }
         return {
           ...gameState,
           pieces: gameState.pieces.map((p) =>
-            p.id === input.id ? { ...p, position: input.position } : p
+            p.id === id ? { ...p, position, lifted } : p
           ),
         };
       });

@@ -7,8 +7,8 @@ export const GamePieceIcon: React.FC<{
   className?: string;
   size: PieceSize;
   color: PieceColor;
-  dragging?: boolean;
-}> = ({ size, color, dragging, className }) => {
+  lifted?: boolean;
+}> = ({ size, color, lifted, className }) => {
   return (
     <Transition
       show
@@ -27,8 +27,8 @@ export const GamePieceIcon: React.FC<{
           "cursor-pointer block",
           "transition overflow-hidden shadow-slate-700/70 dark:shadow-black/80",
           "font-bold flex justify-center items-center text-3xl",
-          !dragging && "shadow-sm hover:scale-110",
-          dragging && "shadow-xl scale-125",
+          !lifted && "shadow-sm hover:scale-110 hover:animate-breathe",
+          lifted && "shadow-xl scale-125",
           size === "small" && "w-4 h-4 rounded-sm",
           size === "medium" && "w-6 h-6 rounded-sm rotate-45",
           size === "large" && color === "green"

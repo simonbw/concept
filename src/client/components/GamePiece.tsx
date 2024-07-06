@@ -1,16 +1,17 @@
+import { Transition } from "@headlessui/react";
 import React from "react";
 import Draggable from "react-draggable";
 import { useGameState } from "../hooks/useGameState";
 import { trpcClient } from "../trpc/trpcClient";
+import { classNames } from "../utils/classNames";
 import { useBoardRef } from "./BoardPositionContext";
 import { GamePieceIcon } from "./GamePieceIcon";
-import { classNames } from "../utils/classNames";
-import { Transition } from "@headlessui/react";
 
 export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
   const gameState = useGameState();
   const [dragging, setDragging] = React.useState(false);
   const boardRef = useBoardRef();
+
   if (!boardRef) return null;
   if (!gameState) return null;
 
@@ -34,12 +35,20 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
         position={
           dragging ? undefined : { x: piece.position[0], y: piece.position[1] }
         }
-        onStart={() => setDragging(true)}
+        onStart={() => {
+          setDragging(true);
+          trpcClient.pieces.move.mutate({
+            id: piece.id,
+            position: piece.position,
+            lifted: true,
+          });
+        }}
         onStop={(e, data) => {
           setDragging(false);
           trpcClient.pieces.move.mutate({
             id: piece.id,
             position: [data.x, data.y],
+            lifted: false,
           });
         }}
         onDrag={(e, data) => {
@@ -47,6 +56,7 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
           trpcClient.pieces.move.mutate({
             id: piece.id,
             position: [data.x, data.y],
+            lifted: true,
           });
         }}
       >
@@ -59,7 +69,7 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
           <GamePieceIcon
             size={piece.size}
             color={piece.color}
-            dragging={dragging}
+            lifted={dragging || piece.lifted}
           />
         </span>
       </Draggable>

@@ -104,6 +104,7 @@ const PieceStackButton: React.FC<{
               color,
               size,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
+              lifted: false,
             })
             .then((piece) => {
               setPieceId(piece.id);
@@ -116,6 +117,7 @@ const PieceStackButton: React.FC<{
             trpcClient.pieces.move.mutate({
               id: pieceId,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
+              lifted: true,
             });
           }
         }}
@@ -125,12 +127,13 @@ const PieceStackButton: React.FC<{
             trpcClient.pieces.move.mutate({
               id: pieceId,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
+              lifted: false,
             });
             setPieceId(null);
           }
         }}
       >
-        <span className="">
+        <span>
           <GamePieceIcon color={color} size={size} />
         </span>
       </Draggable>
