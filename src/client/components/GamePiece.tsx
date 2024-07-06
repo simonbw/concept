@@ -1,7 +1,12 @@
 import { Transition } from "@headlessui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import { useGameState } from "../hooks/useGameState";
+import {
+  GameStateOverride,
+  useGameState,
+  useGameStateOverride,
+  useRawGameStateListener,
+} from "../hooks/useGameState";
 import { trpcClient } from "../trpc/trpcClient";
 import { classNames } from "../utils/classNames";
 import { useBoardRef } from "./BoardPositionContext";
@@ -9,14 +14,34 @@ import { GamePieceIcon } from "./GamePieceIcon";
 
 export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
   const gameState = useGameState();
-  const [dragging, setDragging] = React.useState(false);
+  const rawGameState = useGameState();
+  const [dragging, setLifted] = useState(false);
+  const [override, setOverride] = useState<GameStateOverride | undefined>(
+    undefined
+  );
+  useGameStateOverride(override);
   const boardRef = useBoardRef();
+
+  useRawGameStateListener((newState, oldState) => {
+    if (!gameState) return;
+    const piece = newState.pieces.find((piece) => piece.id === id);
+    if (!piece) return;
+    const oldPiece = oldState?.pieces.find((piece) => piece.id === id);
+    if (!oldPiece) return;
+    // Cancel the override once the piece has been set down
+    if (!piece.lifted && oldPiece.lifted) {
+      setOverride(undefined);
+    }
+  });
 
   if (!boardRef) return null;
   if (!gameState) return null;
+  if (!rawGameState) return null;
 
   const piece = gameState.pieces.find((piece) => piece.id === id);
+  const rawPiece = rawGameState.pieces.find((piece) => piece.id === id);
   if (!piece) return null;
+  if (!rawPiece) return null;
 
   return (
     <Transition
@@ -36,7 +61,8 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
           dragging ? undefined : { x: piece.position[0], y: piece.position[1] }
         }
         onStart={() => {
-          setDragging(true);
+          setLifted(true);
+          setOverride({ id: piece.id, lifted: true, position: piece.position });
           trpcClient.pieces.move.mutate({
             id: piece.id,
             position: piece.position,
@@ -44,7 +70,12 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
           });
         }}
         onStop={(e, data) => {
-          setDragging(false);
+          setLifted(false);
+          setOverride({
+            id: piece.id,
+            lifted: false,
+            position: [data.x, data.y],
+          });
           trpcClient.pieces.move.mutate({
             id: piece.id,
             position: [data.x, data.y],
@@ -53,6 +84,11 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
         }}
         onDrag={(e, data) => {
           // TODO: Debounce
+          setOverride({
+            id: piece.id,
+            lifted: true,
+            position: [data.x, data.y],
+          });
           trpcClient.pieces.move.mutate({
             id: piece.id,
             position: [data.x, data.y],

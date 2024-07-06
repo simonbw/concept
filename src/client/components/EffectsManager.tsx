@@ -79,12 +79,12 @@ const EffectSprite: React.FC<{ effect: Effect }> = ({ effect }) => {
     >
       <div
         className={classNames(
-          "rounded-full absolute z-10 opaci-80 border-4",
+          "rounded-full absolute z-10 opaci-80",
           color === "green" && "border-green-500",
           color === "red" && "border-red-500",
           color === "blue" && "border-blue-500",
           color === "yellow" && "border-yellow-500",
-          color === "black" && "border-black dark:border dark:border-slate-500",
+          color === "black" && "border-black dark:border dark:border-slate-300",
           size === "small" && "w-4 h-4 rounded-sm",
           size === "medium" && "w-6 h-6 rounded-sm rotate-45",
           size === "large" && color === "green"
