@@ -1,13 +1,12 @@
+/* All the base imports */
 @import "tailwindcss/base";
 @import "tippy.js/dist/tippy.css";
-@import "./fonts/fonts.css";
+@import "./fonts.css";
 @import "./base.css";
 
+/* All the component imports */
 @import "tailwindcss/components";
+@import "./components.css";
 
+/* All the utility imports */
 @import "tailwindcss/utilities";
-
-.concept-icon {
-  @apply absolute inset-0 flex items-center justify-center text-center;
-  @apply break-all text-3xl leading-tight select-none;
-}

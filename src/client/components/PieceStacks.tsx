@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import {
   PieceColor,
@@ -36,7 +36,7 @@ export const PieceStacks: React.FC = () => {
         className={classNames(
           "dark:text-slate-300/80 dark:hover:text-slate-300 px-4 py-1 rounded-lg hover:bg-slate-400/20 active:bg-slate-400/30"
         )}
-        onClick={() => trpcClient.gameState.reset.mutate()}
+        onClick={() => trpcClient.pieces.reset.mutate()}
       >
         Reset Pieces
       </button>
@@ -58,14 +58,14 @@ const PieceStackButton: React.FC<{
     (size === "medium" && existing >= 1) ||
     (size === "small" && existing >= 8);
 
-  const [dragPosition, setDragPosition] = React.useState<{
+  const [dragPosition, setDragPosition] = useState<{
     x: number;
     y: number;
   } | null>(null);
   const originRef = useRef<HTMLSpanElement>(null);
-  const [pieceId, setPieceId] = React.useState<string | null>(null);
+  const [pieceId, setPieceId] = useState<string | null>(null);
 
-  const [startPosition, setStartPosition] = React.useState<{
+  const [startPosition, setStartPosition] = useState<{
     x: number;
     y: number;
   } | null>(null);

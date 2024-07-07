@@ -19,7 +19,7 @@ const ColorBackground: React.FC = () => {
 
 const ColorConceptIcon: React.FC<{ className: string }> = ({ className }) => {
   return (
-    <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600 relative">
+    <div className="concept-icon bg-gradient-to-br from-slate-100 to-green-600">
       <ColorBackground />
       <span
         className={classNames(

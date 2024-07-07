@@ -3,6 +3,7 @@ import { initialGameState } from "../common/initialGameState";
 import { GameState } from "../common/models/GameStateSchema";
 import { Channel } from "./utils/Channel";
 import { DiffChannel } from "./utils/DiffChannel";
+import { rInteger } from "../common/utils/randUtils";
 
 export const DEFAULT_GAME_ID = "";
 const gameStates = new Map<string, Readonly<GameState>>();
@@ -27,7 +28,12 @@ export function getAllGames() {
 
 export function getGameState(gameId: string): Readonly<GameState> {
   if (!gameStates.has(gameId)) {
-    const gameState = { ...initialGameState, startedAt: Date.now() };
+    const gameState = {
+      ...initialGameState,
+      startedAt: Date.now(),
+      updatedAt: Date.now(),
+      deckSeed: rInteger(0, Number.MAX_SAFE_INTEGER),
+    };
     gameStates.set(gameId, gameState);
     gameStoreChannel.publish({ type: "gameAdded", gameId, gameState });
   }
@@ -64,15 +70,6 @@ export async function updateGameState(
     gameState: updatedGameState,
   });
   return updatedGameState;
-}
-
-// Resets the game state to the initial state
-export async function resetGameState(gameId: string) {
-  await updateGameState(gameId, () => ({
-    ...initialGameState,
-    startedAt: Date.now(),
-    updatedAt: Date.now(),
-  }));
 }
 
 // TODO: Cleanup unused games

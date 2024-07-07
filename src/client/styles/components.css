@@ -1,0 +1,12 @@
+/* For every square on the thing */
+.concept-icon {
+  @apply absolute inset-0 flex items-center justify-center text-center;
+  @apply break-all text-3xl leading-tight select-none;
+}
+
+/* For the little settings buttons up top */
+.settings-button {
+  @apply flex items-center justify-center rounded-full w-8 h-8;
+  @apply shadow-slate-500/80 dark:shadow-black/80 shadow-md bg-slate-600 text-slate-100 font-bold;
+  @apply transition-transform hover:scale-110;
+}

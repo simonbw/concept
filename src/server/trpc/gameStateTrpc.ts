@@ -1,16 +1,17 @@
 import { observable } from "@trpc/server/observable";
 import merge from "ts-deepmerge";
+import { initialGameState } from "../../common/initialGameState";
 import {
   GameState,
   gameStateSchema,
 } from "../../common/models/GameStateSchema";
 import { DiffStream } from "../../common/models/diffStreamSchema";
 import { idMaker } from "../../common/utils/idMaker";
+import { rInteger } from "../../common/utils/randUtils";
 import { WebError } from "../WebError";
 import {
   getGameState,
   getGameStateDiffChannel,
-  resetGameState,
   updateGameState,
 } from "../gameState";
 import { trpc } from "./trpc";
@@ -41,8 +42,12 @@ export const gameStateTrpcRouter = trpc.router({
   // Mutations
   reset: trpc.procedure.mutation(async ({ ctx }) => {
     console.log("Resetting game state");
-    await resetGameState(ctx.gameId);
-    return getGameState(ctx.gameId);
+    return await updateGameState(ctx.gameId, () => ({
+      ...initialGameState,
+      startedAt: Date.now(),
+      updatedAt: Date.now(),
+      deckSeed: rInteger(0, Number.MAX_SAFE_INTEGER),
+    }));
   }),
 
   patch: trpc.procedure

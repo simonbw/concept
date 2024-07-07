@@ -9,6 +9,14 @@ export function getAudioContext(): AudioContext {
   return audioContext;
 }
 
+export function mute() {
+  getAudioContext().suspend();
+}
+
+export function unmute() {
+  getAudioContext().resume();
+}
+
 const SOUNDS = {
   "pick-up": "/static/audio/pick-up.flac",
   "set-down": "/static/audio/set-down.flac",
@@ -28,10 +36,12 @@ export function playSound(name: SoundName) {
     console.warn(`Sound not loaded: ${name}`);
     return;
   }
-  const source = getAudioContext().createBufferSource();
-  source.buffer = buffer;
-  source.connect(getAudioContext().destination);
-  source.start();
+  if (getAudioContext().state !== "suspended") {
+    const source = getAudioContext().createBufferSource();
+    source.buffer = buffer;
+    source.connect(getAudioContext().destination);
+    source.start();
+  }
 }
 
 export async function loadSound(

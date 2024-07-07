@@ -7,6 +7,7 @@ import {
 import { idMaker } from "../../common/utils/idMaker";
 import { updateGameState } from "../gameState";
 import { trpc } from "./trpc";
+import { initialGameState } from "../../common/initialGameState";
 
 const makeId = idMaker();
 
@@ -41,11 +42,11 @@ export const piecesTrpcRouter = trpc.router({
     });
   }),
 
-  clear: trpc.procedure.mutation(async ({ ctx }) => {
+  reset: trpc.procedure.mutation(async ({ ctx }) => {
     await updateGameState(ctx.gameId, (gameState) => {
       return {
         ...gameState,
-        pieces: [],
+        pieces: [...initialGameState.pieces],
       };
     });
   }),

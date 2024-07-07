@@ -7,7 +7,7 @@ import { RepeatIcon } from "../components/icons/RepeatIcon";
 
 const TwoDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
+    <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100">
       <div className="absolute inset-0 grid grid-cols-12 grid-rows-12">
         {Array.from({ length: 12 * 12 }).map((_, i) => (
           <span key={i} className="border-[0.5px] border-gray-600/25" />
@@ -221,8 +221,7 @@ const twoDConcepts: ConceptData[] = [
           })
           .join(" ");
       return (
-        <div className="concept-icon bg-gradient-to-r from-slate-100 to-slate-100 relative">
-          <TwoDConceptIcon />
+        <TwoDConceptIcon>
           <svg className="w-full h-full relative" viewBox="0 0 100 100">
             <defs>
               <linearGradient
@@ -256,7 +255,7 @@ const twoDConcepts: ConceptData[] = [
               strokeWidth={6}
             />
           </svg>
-        </div>
+        </TwoDConceptIcon>
       );
     })(),
   },
@@ -480,7 +479,7 @@ const twoDConcepts: ConceptData[] = [
 
 const ThreeDConceptIcon: React.FC<PropsWithChildren> = ({ children }) => {
   return (
-    <div className="concept-icon bg-gradient-to-b from-sky-400/50 to-slate-100 relative">
+    <div className="concept-icon bg-gradient-to-b from-sky-400/50 to-slate-100">
       <svg
         className="absolute top-[50%] left-0 right-0 bottom-0"
         viewBox="0 0 100 100"
@@ -750,7 +749,7 @@ const SpatialConceptIcon: React.FC<
   return (
     <div
       className={classNames(
-        "concept-icon bg-gradient-to-b from-slate-100 to-green-600 relative text-black",
+        "concept-icon bg-gradient-to-b from-slate-100 to-green-600 text-black",
         className
       )}
     >

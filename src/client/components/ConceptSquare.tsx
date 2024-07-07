@@ -1,13 +1,15 @@
 import { Transition } from "@headlessui/react";
-import React from "react";
-import { classNames } from "../utils/classNames";
+import React, { useState } from "react";
 import { ConceptData } from "../concepts/concepts";
+import { classNames } from "../utils/classNames";
+import { useSettings } from "./SettingsContext";
 
 export const ConceptSquare: React.FC<{
   concept: ConceptData;
   orientation?: "left" | "right";
 }> = ({ concept, orientation = "left" }) => {
-  const [tooltipOpen, setTooltipOpen] = React.useState(false);
+  const { tooltipsOpen } = useSettings();
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const isOdd = orientation == "left";
 
@@ -31,7 +33,7 @@ export const ConceptSquare: React.FC<{
       <div className="relative">
         <ConceptTooltip
           description={concept.description}
-          open={tooltipOpen}
+          open={tooltipOpen || tooltipsOpen}
           isOdd={isOdd}
         />
         <div

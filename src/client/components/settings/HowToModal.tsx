@@ -1,28 +1,20 @@
 import React, { useState } from "react";
-import { classNames } from "../utils/classNames";
-import { GamePieceIcon } from "./GamePieceIcon";
-import { ModalBackground } from "./ModalBackground";
+import { classNames } from "../../utils/classNames";
+import { GamePieceIcon } from "../GamePieceIcon";
+import { ModalBackground } from "../ModalBackground";
 import {
   PieceColor,
   pieceColorSchema,
-} from "../../common/models/GameStateSchema";
-import { colorConcepts } from "../concepts/colorConcepts";
-import { Cycler } from "./Cycler";
+} from "../../../common/models/GameStateSchema";
+import { colorConcepts } from "../../concepts/colorConcepts";
+import { Cycler } from "../Cycler";
 
 export const HowToModal: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <button
-        className={classNames(
-          "fixed top-4 right-4 z-40",
-          "flex items-center justify-center",
-          "rounded-full w-8 h-8 shadow-slate-500/80 dark:shadow-black/80 shadow-md bg-slate-600 text-slate-100",
-          "font-bold"
-        )}
-        onClick={() => setOpen(true)}
-      >
+      <button className="settings-button" onClick={() => setOpen(true)}>
         ?
       </button>
 
