@@ -9,7 +9,7 @@ export function useDeck() {
 
   const allCardsShuffled = useMemo(
     () => (gameState ? seededShuffle([...allCards], gameState.deckSeed) : []),
-    [gameState?.deckSeed]
+    [gameState?.deckSeed],
   );
 
   const discardPile = allCardsShuffled.slice(0, numberCardsDrawn).reverse();

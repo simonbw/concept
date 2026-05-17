@@ -10,7 +10,7 @@ export function renderPage(content: ReactNode) {
   const root = createRoot(containerElement);
   root.render(content);
 
-  if (process?.env?.NODE_ENV == "development") {
+  if (process.env.NODE_ENV == "development") {
     registerEsbuildHotReload();
   }
 }

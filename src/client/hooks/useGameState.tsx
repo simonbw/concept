@@ -1,158 +1,77 @@
+import { useMutation, useQuery } from "convex/react";
 import React, {
-  RefObject,
-  useCallback,
+  createContext,
   useContext,
   useEffect,
+  useMemo,
   useRef,
-  useState,
 } from "react";
-import {
-  GameState,
-  gameStateSchema,
-  PieceState,
-} from "../../common/models/GameStateSchema";
-import { objectValues } from "../../common/utils/arrayUtils";
-import { idMaker } from "../../common/utils/idMaker";
-import { trpcClient } from "../trpc/trpcClient";
-import { useDiffStreamSubscription } from "./useDiffStreamSubscription";
+import { api } from "../../../convex/_generated/api";
+import type { Doc } from "../../../convex/_generated/dataModel";
+import { GameState } from "../../common/models/GameStateSchema";
+import { gameId } from "../gameId";
 
 type StateChangeListener = (newState: GameState, oldState?: GameState) => void;
 
-function useGameStateStream(
-  onChange?: StateChangeListener
-): GameState | undefined {
-  return useDiffStreamSubscription(
-    trpcClient.gameState.stream.subscribe,
-    gameStateSchema,
-    onChange
-  );
+/** Project the stored Convex document into the client-facing GameState shape. */
+function toGameState(doc: Doc<"games">): GameState {
+  return {
+    startedAt: doc.startedAt,
+    deckSeed: doc.deckSeed,
+    cardsDrawn: doc.cardsDrawn,
+    pieces: doc.pieces.map((p) => ({
+      id: p.id,
+      size: p.size,
+      color: p.color,
+      position: [p.position[0], p.position[1]],
+      lifted: p.lifted,
+    })),
+  };
 }
 
-export type GameStateOverride =
-  | (Partial<PieceState> & Pick<PieceState, "id">)
-  | undefined;
-
-function applyOverrides(
-  state: GameState | undefined,
-  overrides: GameStateOverride[]
-): GameState | undefined {
-  if (!state) return undefined;
-
-  for (const override of overrides) {
-    if (!override) continue;
-
-    const piece = state.pieces.find((p) => p.id === override.id);
-    if (!piece) {
-      console.error(`Piece with id ${override.id} not found`);
-      continue;
-    }
-
-    console.log("Applying override", override);
-
-    state = {
-      ...state,
-      pieces: state.pieces.map((piece) => {
-        if (piece.id === override.id) {
-          return { ...piece, ...override };
-        } else {
-          return piece;
-        }
-      }),
-    };
-  }
-
-  return state;
-}
-
-const GameStateContext = React.createContext<{
-  rawGameState: GameState | undefined;
+const GameStateContext = createContext<{
   gameState: GameState | undefined;
-  useRawListener: (listener: StateChangeListener) => void;
-  useListener: (listener: StateChangeListener) => void;
-  useOverride: (override: GameStateOverride) => void;
-}>({
-  rawGameState: undefined,
-  gameState: undefined,
-  useRawListener: () => {},
-  useListener: () => {},
-  useOverride: () => {},
-});
-
-const makeId = idMaker();
+  listeners: Set<StateChangeListener>;
+}>({ gameState: undefined, listeners: new Set() });
 
 export const GameStateProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const lastGameStateRef = useRef<GameState | undefined>(undefined);
-  const rawListenersRef = useRef<Set<StateChangeListener>>(new Set());
-  const listenersRef = useRef<Set<StateChangeListener>>(new Set());
-  const [overrides, setOverrides] = useState<{
-    [id: string]: GameStateOverride;
-  }>({});
+  const ensureGame = useMutation(api.games.ensureGame);
+  const doc = useQuery(api.games.get, { gameId });
 
-  // Call all the listeners when the game state changes
-  const rawGameState = useGameStateStream((newState, oldState) => {
-    for (const listener of rawListenersRef.current) {
-      listener(newState, oldState);
-    }
-  });
+  // Lazily create the game on first visit.
+  useEffect(() => {
+    void ensureGame({ gameId }).catch((error) => {
+      console.error("ensureGame failed", error);
+    });
+  }, [ensureGame]);
 
-  const gameState = applyOverrides(
-    rawGameState,
-    objectValues(overrides).flat()
+  // `useQuery` returns a stable reference until the data actually changes, so
+  // this memo only recomputes on a real state change.
+  const gameState = useMemo(
+    () => (doc ? toGameState(doc) : undefined),
+    [doc],
   );
 
+  const listenersRef = useRef<Set<StateChangeListener>>(new Set());
+  const lastRef = useRef<GameState | undefined>(undefined);
+
   useEffect(() => {
-    if (gameState) {
-      for (const listener of listenersRef.current) {
-        listener(gameState, lastGameStateRef.current);
-      }
-      lastGameStateRef.current = gameState;
+    if (!gameState) return;
+    for (const listener of listenersRef.current) {
+      listener(gameState, lastRef.current);
     }
+    lastRef.current = gameState;
   }, [gameState]);
 
-  const useRawListener = useCallback((listener: StateChangeListener): void => {
-    useEffect(() => {
-      rawListenersRef.current.add(listener);
-      return () => {
-        rawListenersRef.current.delete(listener);
-      };
-    }, [listener]);
-  }, []);
-
-  const useListener = useCallback((listener: StateChangeListener): void => {
-    useEffect(() => {
-      listenersRef.current.add(listener);
-      return () => {
-        listenersRef.current.delete(listener);
-      };
-    }, [listener]);
-  }, []);
-
-  const useOverride = (override: GameStateOverride) => {
-    const [id] = useState(makeId())[0];
-    useEffect(() => {
-      setOverrides((o) => ({ ...o, [id]: override }));
-      return () => {
-        setOverrides((o) => {
-          let newOverrides = { ...o };
-          delete newOverrides[id];
-          return newOverrides;
-        });
-      };
-    }, [override]);
-  };
+  const value = useMemo(
+    () => ({ gameState, listeners: listenersRef.current }),
+    [gameState],
+  );
 
   return (
-    <GameStateContext.Provider
-      value={{
-        rawGameState,
-        gameState,
-        useRawListener,
-        useListener,
-        useOverride,
-      }}
-    >
+    <GameStateContext.Provider value={value}>
       {children}
     </GameStateContext.Provider>
   );
@@ -162,25 +81,13 @@ export function useGameState(): GameState | undefined {
   return useContext(GameStateContext).gameState;
 }
 
-export function useRawGameState(): GameState | undefined {
-  return useContext(GameStateContext).rawGameState;
-}
-
-export function useGameStateRef(): RefObject<GameState | undefined> {
-  const gameState = useGameState();
-  const ref = useRef<GameState | undefined>(gameState);
-  ref.current = gameState;
-  return ref;
-}
-
-export function useGameStateListener(listener: StateChangeListener) {
-  useContext(GameStateContext).useListener(listener);
-}
-
-export function useRawGameStateListener(listener: StateChangeListener) {
-  useContext(GameStateContext).useRawListener(listener);
-}
-
-export function useGameStateOverride(override: GameStateOverride) {
-  useContext(GameStateContext).useOverride(override);
+/** Subscribe to game-state changes, e.g. to fire effects on piece transitions. */
+export function useGameStateListener(listener: StateChangeListener): void {
+  const { listeners } = useContext(GameStateContext);
+  useEffect(() => {
+    listeners.add(listener);
+    return () => {
+      listeners.delete(listener);
+    };
+  }, [listener, listeners]);
 }

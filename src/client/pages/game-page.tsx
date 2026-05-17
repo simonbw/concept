@@ -1,13 +1,17 @@
+import { ConvexProvider } from "convex/react";
 import React from "react";
-import { renderPage } from "../utils/renderPage";
-import { GameStateProvider } from "../hooks/useGameState";
 import { GamePage } from "../components/GamePage";
 import { SettingsProvider } from "../components/SettingsContext";
+import { convex } from "../convexClient";
+import { GameStateProvider } from "../hooks/useGameState";
+import { renderPage } from "../utils/renderPage";
 
 renderPage(
-  <GameStateProvider>
-    <SettingsProvider>
-      <GamePage />
-    </SettingsProvider>
-  </GameStateProvider>
+  <ConvexProvider client={convex}>
+    <GameStateProvider>
+      <SettingsProvider>
+        <GamePage />
+      </SettingsProvider>
+    </GameStateProvider>
+  </ConvexProvider>,
 );

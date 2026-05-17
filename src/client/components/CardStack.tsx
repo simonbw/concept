@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { range } from "../../common/utils/arrayUtils";
 import { clamp } from "../../common/utils/mathUtils";
 import { CardData, allCards } from "../cards/cards";
+import { useGameActions } from "../hooks/useGameActions";
+import { useDeck } from "../hooks/useDeck";
 import { useGameState } from "../hooks/useGameState";
-import { trpcClient } from "../trpc/trpcClient";
 import { classNames } from "../utils/classNames";
 import { DrawnCard } from "./DrawnCard";
 import { ModalBackground } from "./ModalBackground";
 import { ShuffleIcon } from "./icons/ShuffleIcon";
 import { UndoIcon } from "./icons/UndoIcon";
-import { useDeck } from "../hooks/useGameState copy";
 
 export const CardStack: React.FC = () => {
   const gameState = useGameState();
+  const { drawCard } = useGameActions();
   const cardsDrawn = gameState?.cardsDrawn ?? 0;
   const cardsRemain = allCards.length - cardsDrawn;
   const { deck, discardPile } = useDeck();
@@ -83,7 +84,7 @@ export const CardStack: React.FC = () => {
               "transition-transform hover:scale-105 hover:shadow-md active:scale-110 active:shadow-lg"
             )}
             onClick={() => {
-              trpcClient.cards.draw.mutate();
+              drawCard();
               setCurrentCard(deck[0]);
             }}
           >
@@ -118,6 +119,7 @@ const LastCardButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
 };
 
 const ShuffleButton: React.FC = () => {
+  const { shuffle } = useGameActions();
   return (
     <button
       className={classNames(
@@ -125,7 +127,7 @@ const ShuffleButton: React.FC = () => {
         "bg-slate-500 text-slate-100 dark:bg-slate-800 dark:text-slate-200",
         "transition hover:scale-[1.15] hover:drop-shadow-md active:scale-125 active:drop-shadow-lg"
       )}
-      onClick={() => trpcClient.cards.shuffle.mutate()}
+      onClick={() => shuffle()}
     >
       <ShuffleIcon className="w-4 h-4" />
     </button>

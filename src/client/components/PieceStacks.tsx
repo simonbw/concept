@@ -6,20 +6,25 @@ import {
   pieceColorSchema,
   pieceSizeSchema,
 } from "../../common/models/GameStateSchema";
+import { useGameActions } from "../hooks/useGameActions";
 import { useGameState } from "../hooks/useGameState";
-import { trpcClient } from "../trpc/trpcClient";
+import { useThrottledCallback } from "../hooks/useThrottledCallback";
 import { classNames } from "../utils/classNames";
 import { GamePieceIcon } from "./GamePieceIcon";
 
+/** How often (ms) intermediate drag positions are synced to other clients. */
+const DRAG_SYNC_MS = 50;
+
 export const PieceStacks: React.FC = () => {
   const gameState = useGameState();
+  const { resetPieces } = useGameActions();
 
   return (
     <div
       className={classNames(
         "flex gap-6 justify-center mb-4",
         "transition-opacity duration-300",
-        gameState ? "opacity-100" : "opacity-0"
+        gameState ? "opacity-100" : "opacity-0",
       )}
     >
       {pieceColorSchema.options.map((color) => (
@@ -34,9 +39,9 @@ export const PieceStacks: React.FC = () => {
 
       <button
         className={classNames(
-          "dark:text-slate-300/80 dark:hover:text-slate-300 px-4 py-1 rounded-lg hover:bg-slate-400/20 active:bg-slate-400/30"
+          "dark:text-slate-300/80 dark:hover:text-slate-300 px-4 py-1 rounded-lg hover:bg-slate-400/20 active:bg-slate-400/30",
         )}
-        onClick={() => trpcClient.pieces.reset.mutate()}
+        onClick={() => resetPieces()}
       >
         Reset Pieces
       </button>
@@ -49,6 +54,9 @@ const PieceStackButton: React.FC<{
   size: PieceSize;
 }> = ({ size, color }) => {
   const gameState = useGameState();
+  const { addPiece, movePiece } = useGameActions();
+  const throttledMove = useThrottledCallback(movePiece, DRAG_SYNC_MS);
+
   const existing =
     gameState?.pieces.filter((p) => p.color === color && p.size === size)
       .length ?? 0;
@@ -97,24 +105,22 @@ const PieceStackButton: React.FC<{
         key={size}
         onStart={(e, data) => {
           setDragPosition({ x: data.x, y: data.y });
-          console.log("creating piece", color, size, [data.x, data.y]);
-
-          trpcClient.pieces.add
-            .mutate({
-              color,
-              size,
-              position: [startPosition!.x + data.x, startPosition!.y + data.y],
-              lifted: false,
-            })
-            .then((piece) => {
-              setPieceId(piece.id);
-            });
+          // Generate the id client-side so the drag can start syncing
+          // immediately without waiting for the create to round-trip.
+          const id = crypto.randomUUID();
+          setPieceId(id);
+          addPiece({
+            id,
+            color,
+            size,
+            position: [startPosition!.x + data.x, startPosition!.y + data.y],
+            lifted: false,
+          });
         }}
         onDrag={(e, data) => {
           setDragPosition({ x: data.x, y: data.y });
           if (pieceId) {
-            // TODO: Debounce
-            trpcClient.pieces.move.mutate({
+            throttledMove({
               id: pieceId,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
               lifted: true,
@@ -124,7 +130,7 @@ const PieceStackButton: React.FC<{
         onStop={(e, data) => {
           setDragPosition(null);
           if (pieceId) {
-            trpcClient.pieces.move.mutate({
+            movePiece({
               id: pieceId,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
               lifted: false,
