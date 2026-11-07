@@ -1,12 +1,16 @@
 # Design Doc: Migrating Concept from Heroku to Vercel + Convex
 
-Status: In progress — code implemented on branch `migrate-to-convex`
+Status: Deployed — production is live on Vercel + Convex; domain cutover pending
 Author: Simon
 Date: 2026-05-16
 
-> Implementation note: checklist steps 2–7 are done on the `migrate-to-convex`
-> branch. Remaining: step 1 (install the Convex integration / `npx convex dev`)
-> and steps 8–9 (deploy, cut over), which need Vercel/Convex account access.
+> Implementation note (2026-11-07): steps 1–8 are done. Convex was provisioned
+> via the Vercel Marketplace integration (free plan); the Vercel project
+> `concept` is git-connected and `main` deploys to production (Convex
+> deployment `brainy-opossum-200`). Preview branches deploy to their own
+> Convex preview deployments. Remaining (step 9): point `concept.simonbw.com`
+> at Vercel (replace the Heroku CNAME in the `simonbw.com` DNS zone and add
+> the domain to the project), then decommission the Heroku app.
 
 ## 1. Summary
 
