@@ -1,14 +1,15 @@
 import { useMemo, useRef } from "react";
-import { throttle } from "../utils/throttle";
+import { Throttled, throttle } from "../utils/throttle";
 
 /**
  * A stable throttled callback. The returned function keeps its throttle state
- * across renders and always calls through to the latest `fn`.
+ * across renders and always calls through to the latest `fn`. Call `.cancel()`
+ * to drop a pending trailing call (e.g. when a drag ends).
  */
 export function useThrottledCallback<A extends unknown[]>(
   fn: (...args: A) => void,
   ms: number,
-): (...args: A) => void {
+): Throttled<A> {
   const fnRef = useRef(fn);
   fnRef.current = fn;
   return useMemo(

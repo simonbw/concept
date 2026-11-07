@@ -50,6 +50,7 @@ export const GamePiece: React.FC<{ id: string }> = ({ id }) => {
         }}
         onStop={(e, data) => {
           setDragging(false);
+          throttledMove.cancel();
           movePiece({ id, position: [data.x, data.y], lifted: false });
         }}
       >

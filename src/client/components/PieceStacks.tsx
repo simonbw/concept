@@ -71,7 +71,8 @@ const PieceStackButton: React.FC<{
     y: number;
   } | null>(null);
   const originRef = useRef<HTMLSpanElement>(null);
-  const [pieceId, setPieceId] = useState<string | null>(null);
+  // A ref, not state: drag callbacks must see the id immediately after onStart.
+  const pieceIdRef = useRef<string | null>(null);
 
   const [startPosition, setStartPosition] = useState<{
     x: number;
@@ -108,7 +109,7 @@ const PieceStackButton: React.FC<{
           // Generate the id client-side so the drag can start syncing
           // immediately without waiting for the create to round-trip.
           const id = crypto.randomUUID();
-          setPieceId(id);
+          pieceIdRef.current = id;
           addPiece({
             id,
             color,
@@ -119,6 +120,7 @@ const PieceStackButton: React.FC<{
         }}
         onDrag={(e, data) => {
           setDragPosition({ x: data.x, y: data.y });
+          const pieceId = pieceIdRef.current;
           if (pieceId) {
             throttledMove({
               id: pieceId,
@@ -129,13 +131,15 @@ const PieceStackButton: React.FC<{
         }}
         onStop={(e, data) => {
           setDragPosition(null);
+          throttledMove.cancel();
+          const pieceId = pieceIdRef.current;
           if (pieceId) {
             movePiece({
               id: pieceId,
               position: [startPosition!.x + data.x, startPosition!.y + data.y],
               lifted: false,
             });
-            setPieceId(null);
+            pieceIdRef.current = null;
           }
         }}
       >
