@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/simonbw/concept#readme",
   "engines": {
-    "npm": "10.x",
-    "node": "20.x"
+    "npm": ">=10",
+    "node": "24.x"
   },
   "prettier": {},
   "dependencies": {

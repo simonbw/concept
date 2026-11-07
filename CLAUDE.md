@@ -8,7 +8,7 @@ A web-based clone of the board game *Concept*. Players place colored/sized piece
 
 ## Commands
 
-Requires Node 20.x / npm 10.x (see `.nvmrc`, `package.json` engines).
+Requires Node 24.x / npm 10+ (see `.nvmrc`, `package.json` engines).
 
 - `npm run dev` — runs the esbuild client watcher/dev-server and `convex dev` in parallel. Client is served by esbuild on `ES_BUILD_DEV_PORT` (default 3001), with SPA fallback so `/:gameId` routes work.
 - `npm run build` — production client build (`esbuild-client.config.mjs`) into `dist/client/`.
